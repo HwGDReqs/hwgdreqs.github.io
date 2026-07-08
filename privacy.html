@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HwGDReqs – Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px 48px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .header h1 {
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: #333;
+      letter-spacing: -0.5px;
+    }
+    .header .version {
+      font-weight: 400;
+      color: #999;
+      font-size: 1rem;
+      margin-left: 8px;
+    }
+    .subhead {
+      font-size: 1.1rem;
+      color: #666;
+      margin-top: 4px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .badge-row {
+      margin: 18px 0 24px 0;
+    }
+    .badge {
+      display: inline-block;
+      background: #eee;
+      padding: 4px 14px;
+      font-size: 0.75rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-right: 6px;
+      border: 1px solid #ddd;
+    }
+
+    .content {
+      background: #fafafa;
+      padding: 30px 32px;
+      border: 1px solid #e5e5e5;
+      margin-bottom: 30px;
+      line-height: 1.7;
+      color: #444;
+    }
+    .content h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+      margin: 24px 0 10px 0;
+    }
+    .content h2:first-child {
+      margin-top: 0;
+    }
+    .content p {
+      margin-bottom: 14px;
+    }
+    .content ul {
+      margin: 8px 0 16px 24px;
+      color: #555;
+    }
+    .content li {
+      margin-bottom: 6px;
+    }
+    .content code {
+      background: #eee;
+      padding: 1px 8px;
+      font-size: 0.85rem;
+      border: 1px solid #ddd;
+    }
+    .content .highlight-box {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .content .highlight-box strong {
+      color: #333;
+    }
+
+    .back-link {
+      display: inline-block;
+      background: #0078d7;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 10px 28px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-top: 8px;
+    }
+    .back-link:hover {
+      background: #005a9e;
+    }
+
+    .footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid #eee;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+    .footer a {
+      color: #888;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>HwGDReqs <span class="version">Privacy Policy</span></h1>
+    <div class="subhead">Last updated: July 8, 2026</div>
+  </div>
+
+  <div class="badge-row">
+    <span class="badge">GPL-v3</span>
+    <span class="badge">Open Source</span>
+    <span class="badge">No data collection</span>
+  </div>
+
+  <div class="content">
+
+    <h2>Overview</h2>
+    <p>
+      HwGDReqs is a desktop application for Geometry Dash streamers that reads
+      level IDs from Twitch and YouTube chat. This privacy policy explains what
+      data the application accesses and how it is handled.
+    </p>
+
+    <div class="highlight-box">
+      <strong>TL;DR:</strong> This application does not collect, store, or transmit
+      any personal data. No analytics. No tracking. No telemetry. What happens on
+      your machine stays on your machine.
+    </div>
+
+    <h2>What the Application Accesses</h2>
+    <p>HwGDReqs connects to the following services solely to perform its core function:</p>
+    <ul>
+      <li>
+        <strong>Twitch API</strong> &middot Used to read chat messages from your Twitch
+        channel. You authenticate via the device flow; the application only
+        receives an access token and does store it locally only.
+      </li>
+      <li>
+        <strong>YouTube Chat</strong> &middot Uses <code>pytchat</code> to fetch live
+        chat messages from YouTube. No login is required; the application only
+        needs the channel username, THATS IT.
+      </li>
+      <li>
+        <strong>GDBrowser API</strong> &middot Fetches level metadata (name, difficulty,
+        length, likes/dislikes) when a level ID is submitted. (GD Colon made this)
+      </li>
+      <li>
+        <strong>Level Thumbnails API</strong> &middot Retrieves thumbnail images for
+        levels displayed in the queue. (by Prevter)
+      </li>
+    </ul>
+
+    <h2>What the Application Does NOT Do</h2>
+    <ul>
+      <li>Does not collect any personal information</li>
+      <li>Does not store chat logs or message history</li>
+      <li>Does not send any data to remote servers (other than the API calls listed above)</li>
+      <li>Does not include analytics, crash reporting, or telemetry</li>
+      <li>Does not track your usage or behavior</li>
+      <li>Does not share any data with third parties</li>
+    </ul>
+
+    <h2>Local Storage</h2>
+    <p>
+      The application stores the following data locally on your machine:
+    </p>
+    <ul>
+      <li>Queue state (levels currently in the request queue)</li>
+      <li>Queue History</li>
+      <li>Blacklist settings (blocked levels, authors, or requesters)</li>
+      <li>Application preferences (difficulty filters, length filters, etc.)</li>
+      <li>Thumbnail cache (downloaded level images)(Temporary)</li>
+    </ul>
+    <p>
+      All of this data is stored in a local configuration file on your computer.
+      No data from these files is ever transmitted externally.
+    </p>
+
+    <h2>Open Source Transparency</h2>
+    <p>
+      HwGDReqs is fully open source under the
+      <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" style="color:#0078d7; text-decoration:none;">GPLv3 license</a>.
+      You can review the complete source code on
+      <a href="https://github.com/HwGDReqs/HwGDReqs" style="color:#0078d7; text-decoration:none;">GitHub</a>
+      to verify exactly what the application does.
+    </p>
+
+    <h2>Third-Party Services</h2>
+    <p>
+      The application communicates with the following external APIs. Please refer
+      to their respective privacy policies for information on how they handle data:
+    </p>
+    <ul>
+      <li><a href="https://www.twitch.tv/p/legal/privacy-policy/" style="color:#0078d7; text-decoration:none;">Twitch Privacy Policy</a></li>
+      <li><a href="https://policies.google.com/privacy" style="color:#0078d7; text-decoration:none;">Google/YouTube Privacy Policy</a></li>
+      <li><a href="https://gdbrowser.com/" style="color:#0078d7; text-decoration:none;">GDBrowser</a> (no official privacy policy published)</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>
+      If you have any questions about this privacy policy or the application,
+      you can open an issue on the
+      <a href="https://github.com/HwGDReqs/HwGDReqs/issues" style="color:#0078d7; text-decoration:none;">GitHub repository</a>
+      or contact the developer directly via GitHub.
+    </p>
+
+    <a href="https://hwgdreqs.com" class="back-link">< Back to main page</a>
+
+  </div>
+
+</div>
+
+</body>
+</html>
