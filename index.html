@@ -18,7 +18,6 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
 
-    /* 2014 header — no gradient, just bold */
     .header h1 {
       font-size: 2.6rem;
       font-weight: 300;
@@ -39,7 +38,6 @@
       border-bottom: 1px solid #eee;
     }
 
-    /* 2014 tags — flat, no rounded corners */
     .badge-row {
       margin: 18px 0 24px 0;
     }
@@ -69,7 +67,6 @@
       max-width: 600px;
     }
 
-    /* 2014 button — flat, square, no gradient, no shadow */
     .download-btn {
       display: inline-block;
       background: #0078d7;
@@ -96,7 +93,6 @@
       margin-right: 18px;
     }
 
-    /* 2014 feature grid — no rounded corners, just borders */
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -127,7 +123,6 @@
       border: 1px solid #ddd;
     }
 
-    /* 2014 trust bar — boring */
     .trust {
       border-top: 1px solid #e5e5e5;
       padding-top: 20px;
@@ -150,6 +145,67 @@
       text-decoration: underline;
     }
 
+    .screenshot-section {
+      margin: 30px 0 20px 0;
+      border-top: 1px solid #e5e5e5;
+      padding-top: 24px;
+    }
+    .screenshot-section h2 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #333;
+      margin-bottom: 14px;
+      letter-spacing: -0.3px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .gallery-item {
+      border: 1px solid #ddd;
+      background: #fafafa;
+      cursor: pointer;
+      transition: border 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gallery-item:hover {
+      border-color: #999;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .fullscreen-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      cursor: pointer;
+      padding: 20px;
+    }
+    .fullscreen-overlay.active {
+      display: flex;
+    }
+    .fullscreen-overlay img {
+      max-width: 95%;
+      max-height: 95%;
+      border: 1px solid #444;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      object-fit: contain;
+      background: #111;
+    }
+
     .footer {
       margin-top: 32px;
       padding-top: 16px;
@@ -157,6 +213,11 @@
       text-align: center;
       font-size: 0.75rem;
       color: #aaa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 20px;
     }
     .footer a {
       color: #888;
@@ -164,6 +225,30 @@
     }
     .footer a:hover {
       color: #333;
+    }
+    .donate-btn {
+      display: inline-block;
+      background: #28a745;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 6px 18px;
+      border: 1px solid #1e7e34;
+      text-decoration: none;
+      transition: background 0.15s;
+      letter-spacing: 0.3px;
+    }
+    .donate-btn:hover {
+      background: #1e7e34;
+      color: #fff;
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 24px 16px; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 450px) {
+      .gallery { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -193,9 +278,21 @@
     </a>
     <div class="download-meta">
       <span>~57 MB</span>
+      <span>Other Platforms soon</span>
       <span>Windows 10 / 11</span>
       <span>sha256: 65e58b08e025e17643d3e898f730e8ef49d55bba850e5c6190ed3e661fb9f333</span>
     </div>
+  </div>
+
+  <div class="screenshot-section">
+    <h2>Interface preview</h2>
+    <div class="gallery" id="gallery">
+      <div class="gallery-item"><img src="assets/1.png" alt="screenshot 1"></div>
+      <div class="gallery-item"><img src="assets/2.png" alt="screenshot 2"></div>
+      <div class="gallery-item"><img src="assets/3.png" alt="screenshot 3"></div>
+      <div class="gallery-item"><img src="assets/4.png" alt="screenshot 4"></div>
+    </div>
+    <p style="font-size:0.75rem; color:#999; margin-top:8px;">Click any image to fullscreen. Click again to close.</p>
   </div>
 
   <div class="features">
@@ -226,16 +323,71 @@
   </div>
 
   <div class="trust">
-    <span><strong>Safe</strong> &middot Everything runs on your PC</span>
+    <span><strong>Safe</strong> · Everything runs on your PC</span>
     <span>Done in Python</span>
     <span>Released July 8, 2026</span>
   </div>
 
   <div class="footer">
-    Made by <a href="https://github.com/MalikHw">MalikHw47</a> &middot;    <a href="https://github.com/HwGDReqs/HwGDReqs">Repository</a> &middot;   GPL-V3 License &middot <a href="privacy.html">Privacy Policy</a>
+    <span>Made by <a href="https://github.com/MalikHw">MalikHw47</a></span>
+    <span><a href="https://github.com/HwGDReqs/HwGDReqs">Repository</a></span>
+    <span>GPL-V3 License</span>
+    <span><a href="privacy.html">Privacy Policy</a></span>
+    <a href="https://malikhw.github.io/donate" class="donate-btn" target="_blank">Donate</a>
+    <span><a href="api.html">API Docs</a></span>
   </div>
 
 </div>
+
+<div class="fullscreen-overlay" id="fullscreenOverlay">
+  <img id="fullscreenImg" src="" alt="fullscreen">
+</div>
+
+<script>
+  (function() {
+    const overlay = document.getElementById('fullscreenOverlay');
+    const fullImg = document.getElementById('fullscreenImg');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    function openFullscreen(src) {
+      fullImg.src = src;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeFullscreen() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    galleryItems.forEach(item => {
+      const img = item.querySelector('img');
+      if (!img) return;
+      item.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openFullscreen(img.src);
+      });
+    });
+
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        closeFullscreen();
+      }
+    });
+
+    fullImg.addEventListener('click', function(e) {
+      e.stopPropagation();
+      closeFullscreen();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        closeFullscreen();
+      }
+    });
+
+  })();
+</script>
 
 </body>
 </html>
