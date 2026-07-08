@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HwGDReqs – API Reference</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px 48px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .header h1 {
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: #333;
+      letter-spacing: -0.5px;
+    }
+    .header .version {
+      font-weight: 400;
+      color: #999;
+      font-size: 1rem;
+      margin-left: 8px;
+    }
+    .subhead {
+      font-size: 1.1rem;
+      color: #666;
+      margin-top: 4px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .badge-row {
+      margin: 18px 0 24px 0;
+    }
+    .badge {
+      display: inline-block;
+      background: #eee;
+      padding: 4px 14px;
+      font-size: 0.75rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-right: 6px;
+      border: 1px solid #ddd;
+    }
+
+    .endpoint-grid {
+      margin: 28px 0 20px 0;
+      border-top: 1px solid #e5e5e5;
+      padding-top: 24px;
+    }
+    .endpoint-grid h2 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    .endpoint-card {
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+    .endpoint-card .method {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 2px 10px;
+      background: #0078d7;
+      color: #fff;
+      border: 1px solid #005a9e;
+      margin-right: 10px;
+      letter-spacing: 0.3px;
+    }
+    .endpoint-card .method.post {
+      background: #28a745;
+      border-color: #1e7e34;
+    }
+    .endpoint-card .path {
+      font-family: "Courier New", monospace;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #222;
+    }
+    .endpoint-card .desc {
+      margin: 10px 0 8px 0;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .endpoint-card .params {
+      font-size: 0.85rem;
+      background: #f0f0f0;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      margin: 6px 0 10px 0;
+      font-family: "Courier New", monospace;
+      color: #333;
+      display: inline-block;
+    }
+    .endpoint-card .example {
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      padding: 10px 14px;
+      margin-top: 8px;
+      font-family: "Courier New", monospace;
+      font-size: 0.8rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #222;
+    }
+    .endpoint-card .example .label {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: #888;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid #eee;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #aaa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+    }
+    .footer a {
+      color: #888;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: #333;
+    }
+    .donate-btn {
+      display: inline-block;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 6px 18px;
+      text-decoration: none;
+      transition: background 0.15s;
+      letter-spacing: 0.3px;
+    }
+    
+    .back-link {
+      display: inline-block;
+      background: #0078d7;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 10px 28px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-top: 8px;
+    }
+    .back-link:hover {
+      background: #005a9e;
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>HwGDReqs <span class="version">API v0.1</span></h1>
+    <div class="subhead">HTTP endpoints when the app is on - JSON responses</div>
+  </div>
+
+  <div class="badge-row">
+    <span class="badge">...yes its REST</span>
+    <span class="badge">localhost:6767</span>
+  </div>
+
+  <div class="endpoint-grid">
+    <h2>Available endpoints</h2>
+
+    <div class="endpoint-card">
+      <div><span class="method">GET</span><span class="path">/queue</span></div>
+      <div class="desc">Full queue or a single row if <code>?row=N</code> is provided.</div>
+      <div class="params">?row=N (optional, 0‑based index)</div>
+      <div class="example">
+        <span class="label">response (full queue)</span>
+{
+  "levels": [
+    {
+      "id": "144370359",
+      "name": "Dreamsomnia",
+      "author": "Szilu",
+      "difficulty": "Insane",
+      "requester": "MalikHw47",
+      "platform": "twitch",
+      "description": "classic",
+      "length": "Long",
+      "large": false,
+      "two_player": false,
+      "disliked": false
+    }
+  ]
+}
+      </div>
+      <div class="example">
+        <span class="label">response (?row=0 or whatever)</span>
+{
+  "level": {
+    "id": "144370359",
+    "name": "Dreamsomnia",
+    "author": "Szilu",
+    "difficulty": "Insane",
+    "requester": "MalikHw47",
+    "platform": "twitch",
+    "description": "classic",
+    "length": "Long",
+    "large": false,
+    "two_player": false,
+    "disliked": false
+  }
+}
+      </div>
+    </div>
+
+    <div class="endpoint-card">
+      <div><span class="method">GET</span><span class="path">/current</span></div>
+      <div class="desc">Currently playing level (first in queue, same as <code>/queue?row=0</code>).</div>
+      <div class="example">
+        <span class="label">response</span>
+{
+  "level": {
+    "id": "12345",
+    "name": "Bloodbath",
+    "author": "Riot",
+    "difficulty": "Extreme Demon",
+    "requester": "viewer42",
+    "platform": "twitch",
+    "description": "classic",
+    "length": "Long",
+    "large": false,
+    "two_player": false,
+    "disliked": false
+  }
+}
+      </div>
+    </div>
+
+    <div class="endpoint-card">
+      <div><span class="method">GET</span><span class="path">/add</span></div>
+      <div class="desc">Add a level by ID. Fetches metadata from GDBrowser. (incase youre doing a discord bot for requests from a channel...)</div>
+      <div class="params">?id=12345  or  ?level_id=12345</div>
+      <div class="example">
+        <span class="label">success</span>
+{ "ok": true }
+      </div>
+      <div class="example">
+        <span class="label">error (not found)</span>
+{ "ok": false, "error": "level_not_found" }
+      </div>
+    </div>
+
+    <div class="endpoint-card">
+      <div><span class="method post">POST</span><span class="path">/delete</span></div>
+      <div class="desc">Remove a level from the queue by ID.</div>
+      <div class="params">body or query: id=12345  or  level_id=12345</div>
+      <div class="example">
+        <span class="label">response</span>
+{ "ok": true }
+      </div>
+    </div>
+
+    <div class="endpoint-card">
+      <div><span class="method post">POST</span><span class="path">/banrequester</span></div>
+      <div class="desc">Blacklist the requester of a given level ID.</div>
+      <div class="params">id=12345  or  level_id=12345</div>
+      <div class="example">
+        <span class="label">response</span>
+{ "ok": true }
+      </div>
+    </div>
+
+    <div class="endpoint-card">
+      <div><span class="method post">POST</span><span class="path">/banauthor</span></div>
+      <div class="desc">Blacklist the author of a given level ID.</div>
+      <div class="params">id=12345  or  level_id=12345</div>
+      <div class="example">
+        <span class="label">response</span>
+{ "ok": true }
+      </div>
+    </div>
+
+    <div class="endpoint-card">
+      <div><span class="method post">POST</span><span class="path">/blacklistlevel</span></div>
+      <div class="desc">Blacklist a specific level by ID.</div>
+      <div class="params">id=12345  or  level_id=12345</div>
+      <div class="example">
+        <span class="label">response</span>
+{ "ok": true }
+      </div>
+    </div>
+
+    <div class="endpoint-card">
+      <div><span class="method post">POST</span><span class="path">/clear</span></div>
+      <div class="desc">Clear the entire queue.</div>
+      <div class="example">
+        <span class="label">response</span>
+{ "ok": true }
+      </div>
+    </div>
+
+    <div class="endpoint-card" style="border-color:#ccc; background:#f8f8f8;">
+      <div><span class="method">GET</span><span class="path">/delete, /banrequester, /banauthor, /blacklistlevel, /clear</span></div>
+      <div class="desc">These endpoints also accept GET with the same parameters for convenience.</div>
+    </div>
+  </div>
+  <a href="https://hwgdreqs.github.io" class="back-link">< Back to main page</a>
+
+  <div class="footer">
+    <span>Made by <a href="https://github.com/MalikHw">MalikHw47</a></span>
+    <span><a href="https://github.com/HwGDReqs/HwGDReqs">Repository</a></span>
+    <span>GPL-V3 License</span>
+    <span><a href="privacy.html">Privacy Policy</a></span>
+    <a href="https://malikhw.github.io/donate" class="donate-btn" target="_blank">Donate</a>
+    <span><a href="api.html">API Docs</a></span>
+  </div>
+
+</div>
+</body>
+</html>
