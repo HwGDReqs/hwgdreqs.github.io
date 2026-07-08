@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HwGDReqs – GD Level Requests for Streamers</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px 48px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    /* 2014 header — no gradient, just bold */
+    .header h1 {
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: #333;
+      letter-spacing: -0.5px;
+    }
+    .header .version {
+      font-weight: 400;
+      color: #999;
+      font-size: 1rem;
+      margin-left: 8px;
+    }
+    .subhead {
+      font-size: 1.1rem;
+      color: #666;
+      margin-top: 4px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* 2014 tags — flat, no rounded corners */
+    .badge-row {
+      margin: 18px 0 24px 0;
+    }
+    .badge {
+      display: inline-block;
+      background: #eee;
+      padding: 4px 14px;
+      font-size: 0.75rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-right: 6px;
+      border: 1px solid #ddd;
+    }
+
+    .hero {
+      background: #fafafa;
+      padding: 30px 32px;
+      border: 1px solid #e5e5e5;
+      margin-bottom: 30px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 22px;
+      max-width: 600px;
+    }
+
+    /* 2014 button — flat, square, no gradient, no shadow */
+    .download-btn {
+      display: inline-block;
+      background: #0078d7;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 12px 36px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .download-btn:hover {
+      background: #005a9e;
+    }
+
+    .download-meta {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    .download-meta span {
+      display: inline-block;
+      margin-right: 18px;
+    }
+
+    /* 2014 feature grid — no rounded corners, just borders */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin: 28px 0 20px 0;
+    }
+    .feature-card {
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      padding: 16px 18px;
+    }
+    .feature-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 4px;
+    }
+    .feature-card p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    .feature-card code {
+      background: #eee;
+      padding: 1px 8px;
+      font-size: 0.8rem;
+      color: #333;
+      border: 1px solid #ddd;
+    }
+
+    /* 2014 trust bar — boring */
+    .trust {
+      border-top: 1px solid #e5e5e5;
+      padding-top: 20px;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: #777;
+    }
+    .trust span {
+      margin-right: 28px;
+    }
+    .trust strong {
+      color: #444;
+      font-weight: 600;
+    }
+    .trust a {
+      color: #0078d7;
+      text-decoration: none;
+    }
+    .trust a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid #eee;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+    .footer a {
+      color: #888;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>HwGDReqs <span class="version">0.1.0</span></h1>
+    <div class="subhead">Geometry Dash level requests for Twitch and YouTube</div>
+  </div>
+
+  <div class="badge-row">
+    <span class="badge">Twitch</span>
+    <span class="badge">Youtube</span>
+    <span class="badge">Geometry Dash</span>
+    <span class="badge">Why is there even tags? ask any one i dont honestly know💀</span>
+  </div>
+
+  <div class="hero">
+    <p>
+      Listen for level IDs in chat. Queue them. Filter by difficulty or length.
+      Blacklist levels, authors, or requesters. Full control, zero clutter.
+    </p>
+    <a href="https://github.com/HwGDReqs/HwGDReqs/releases/latest/download/HwGDReqs-setup.exe" class="download-btn">
+      Download for Windows
+    </a>
+    <div class="download-meta">
+      <span>~57 MB</span>
+      <span>Windows 10 / 11</span>
+      <span>sha256: 65e58b08e025e17643d3e898f730e8ef49d55bba850e5c6190ed3e661fb9f333</span>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature-card">
+      <h3>Twitch + YouTube</h3>
+      <p>Listens to both chats. Device flow for Twitch, no login for YouTube.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Queue management</h3>
+      <p>Add, remove, replace. Only the requester can modify their own levels.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Blacklist system</h3>
+      <p>Block levels, authors, or requesters. Keep the chat clean.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Filters</h3>
+      <p>Difficulty, length, and auto-block disliked levels.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Thumbnails</h3>
+      <p>Live previews via the Level Thumbnails API. Cached for speed.</p>
+    </div>
+    <div class="feature-card">
+      <h3>API + commands</h3>
+      <p>HTTP API for mods. Chat commands: <code>!del</code> and <code>!replace</code>.</p>
+    </div>
+  </div>
+
+  <div class="trust">
+    <span><strong>Safe</strong> &middot Everything runs on your PC</span>
+    <span>Done in Python</span>
+    <span>Released July 8, 2026</span>
+  </div>
+
+  <div class="footer">
+    Made by <a href="https://github.com/MalikHw">MalikHw47</a> &middot;    <a href="https://github.com/HwGDReqs/HwGDReqs">Repository</a> &middot;   GPL-V3 License &middot <a href="privacy.html">Privacy Policy</a>
+  </div>
+
+</div>
+
+</body>
+</html>
