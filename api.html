@@ -206,17 +206,74 @@
 {
   "levels": [
     {
-      "id": "144370359",
-      "name": "Dreamsomnia",
-      "author": "Szilu",
-      "difficulty": "Insane",
-      "requester": "MalikHw47",
+      "id": "144555909",
+      "name": "make your ball ",
+      "author": "colour4242",
+      "difficulty": "Unrated",
+      "requester": "malikhw47",
       "platform": "twitch",
-      "description": "classic",
-      "length": "Long",
+      "message": "!replace 144555910 144555909",
+      "description": "(No description provided)",
+      "length": "Tiny",
       "large": false,
       "two_player": false,
-      "disliked": false
+      "timestamp": 0
+    },
+    {
+      "id": "82535351",
+      "name": "TOUCH GRASS",
+      "author": "GDManster",
+      "difficulty": "Hard",
+      "requester": "wild_chomik",
+      "platform": "twitch",
+      "message": "82535351",
+      "description": "a gd player goes outside after 7 years to go touch some grass because his friend told him to (took me 5 days to build)",
+      "length": "Long",
+      "large": true,
+      "two_player": false,
+      "timestamp": 0
+    },
+    {
+      "id": "141607015",
+      "name": "circuit",
+      "author": "EliseCat",
+      "difficulty": "Hard",
+      "requester": "ohnoesimbaldbro",
+      "platform": "twitch",
+      "message": "141607015",
+      "description": "DESTROY THE AI DATA CENTERS!!!",
+      "length": "Medium",
+      "large": false,
+      "two_player": false,
+      "timestamp": 0
+    },
+    {
+      "id": "100773525",
+      "name": "Odd Toddlers",
+      "author": "Tabgnid",
+      "difficulty": "Harder",
+      "requester": "hello_hello_hellox3",
+      "platform": "twitch",
+      "message": "!replace 143231051 100773525",
+      "description": "ace",
+      "length": "Medium",
+      "large": false,
+      "two_player": false,
+      "timestamp": 0
+    },
+    {
+      "id": "143517648",
+      "name": "Otherside Hotel",
+      "author": "Subwoofer",
+      "difficulty": "Easy Demon",
+      "requester": "ohnoesimbaldbro",
+      "platform": "twitch",
+      "message": "143517648",
+      "description": "What awaits you on the other side?",
+      "length": "Plat",
+      "large": true,
+      "two_player": false,
+      "timestamp": 0
     }
   ]
 }
@@ -225,17 +282,18 @@
         <span class="label">response (?row=0 or whatever)</span>
 {
   "level": {
-    "id": "144370359",
-    "name": "Dreamsomnia",
-    "author": "Szilu",
-    "difficulty": "Insane",
-    "requester": "MalikHw47",
+    "id": "144555909",
+    "name": "make your ball ",
+    "author": "colour4242",
+    "difficulty": "Unrated",
+    "requester": "malikhw47",
     "platform": "twitch",
-    "description": "classic",
-    "length": "Long",
+    "message": "!replace 144555910 144555909",
+    "description": "(No description provided)",
+    "length": "Tiny",
     "large": false,
     "two_player": false,
-    "disliked": false
+    "timestamp": 0
   }
 }
       </div>
@@ -248,17 +306,18 @@
         <span class="label">response</span>
 {
   "level": {
-    "id": "12345",
-    "name": "Bloodbath",
-    "author": "Riot",
-    "difficulty": "Extreme Demon",
-    "requester": "viewer42",
+    "id": "144555909",
+    "name": "make your ball ",
+    "author": "colour4242",
+    "difficulty": "Unrated",
+    "requester": "malikhw47",
     "platform": "twitch",
-    "description": "classic",
-    "length": "Long",
+    "message": "!replace 144555910 144555909",
+    "description": "(No description provided)",
+    "length": "Tiny",
     "large": false,
     "two_player": false,
-    "disliked": false
+    "timestamp": 0
   }
 }
       </div>
@@ -267,7 +326,7 @@
     <div class="endpoint-card">
       <div><span class="method">GET</span><span class="path">/add</span></div>
       <div class="desc">Add a level by ID. Fetches metadata from GDBrowser. (incase youre doing a discord bot for requests from a channel...)</div>
-      <div class="params">?id=12345  or  ?level_id=12345</div>
+      <div class="params">?id=676902</div>
       <div class="example">
         <span class="label">success</span>
 { "ok": true }
@@ -281,7 +340,7 @@
     <div class="endpoint-card">
       <div><span class="method post">POST</span><span class="path">/delete</span></div>
       <div class="desc">Remove a level from the queue by ID.</div>
-      <div class="params">body or query: id=12345  or  level_id=12345</div>
+      <div class="params">body or query: id=12345</div>
       <div class="example">
         <span class="label">response</span>
 { "ok": true }
@@ -291,7 +350,7 @@
     <div class="endpoint-card">
       <div><span class="method post">POST</span><span class="path">/banrequester</span></div>
       <div class="desc">Blacklist the requester of a given level ID.</div>
-      <div class="params">id=12345  or  level_id=12345</div>
+      <div class="params">id=12345</div>
       <div class="example">
         <span class="label">response</span>
 { "ok": true }
@@ -301,7 +360,7 @@
     <div class="endpoint-card">
       <div><span class="method post">POST</span><span class="path">/banauthor</span></div>
       <div class="desc">Blacklist the author of a given level ID.</div>
-      <div class="params">id=12345  or  level_id=12345</div>
+      <div class="params">id=12345</div>
       <div class="example">
         <span class="label">response</span>
 { "ok": true }
@@ -311,7 +370,7 @@
     <div class="endpoint-card">
       <div><span class="method post">POST</span><span class="path">/blacklistlevel</span></div>
       <div class="desc">Blacklist a specific level by ID.</div>
-      <div class="params">id=12345  or  level_id=12345</div>
+      <div class="params">id=12345</div>
       <div class="example">
         <span class="label">response</span>
 { "ok": true }
