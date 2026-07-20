@@ -79,6 +79,7 @@
       border: none;
       cursor: pointer;
       transition: background 0.15s;
+      margin-bottom: 8px;
     }
     .download-btn:hover {
       background: #005a9e;
@@ -95,6 +96,24 @@
       border: none;
       cursor: pointer;
       transition: background 0.15s;
+      margin-bottom: 8px;
+    }
+
+    /* Style for the new alternative installs link */
+    .alt-install-link {
+      display: block;
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: #0078d7;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+    }
+    .alt-install-link:hover {
+      color: #005a9e;
     }
 
     .download-meta {
@@ -220,6 +239,88 @@
       background: #111;
     }
 
+    /* Modal / Popup styles - keeping consistent with existing design */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-content {
+      background: #fff;
+      max-width: 520px;
+      width: 100%;
+      border: 1px solid #ccc;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      padding: 28px 28px 22px;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: #333;
+    }
+    .modal-content h3 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 18px;
+      color: #222;
+      letter-spacing: -0.3px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .modal-content p {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #444;
+      margin-bottom: 24px;
+      white-space: pre-line;
+    }
+    .modal-content code {
+      background: #f0f0f0;
+      padding: 2px 8px;
+      font-size: 0.85rem;
+      color: #c7254e;
+      border: 1px solid #e1e1e1;
+      word-break: break-all;
+    }
+    .modal-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 18px;
+    }
+    .modal-btn {
+      background: #eaeaea;
+      border: 1px solid #ccc;
+      color: #333;
+      font-weight: 500;
+      font-size: 0.85rem;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-family: inherit;
+    }
+    .modal-btn:hover {
+      background: #dcdcdc;
+    }
+    .modal-btn.primary {
+      background: #0078d7;
+      border-color: #0078d7;
+      color: #fff;
+    }
+    .modal-btn.primary:hover {
+      background: #005a9e;
+    }
+
     .footer {
       margin-top: 32px;
       padding-top: 16px;
@@ -254,6 +355,7 @@
     @media (max-width: 700px) {
       .container { padding: 24px 16px; }
       .gallery { grid-template-columns: repeat(2, 1fr); }
+      .modal-content { padding: 20px 16px; }
     }
     @media (max-width: 450px) {
       .gallery { grid-template-columns: 1fr; }
@@ -265,7 +367,7 @@
 <div class="container">
 
   <div class="header">
-    <h1>HwGDReqs <span class="version">0.8.3 pre release</span></h1>
+    <h1>HwGDReqs <span class="version">0.8.4 pre release</span></h1>
     <div class="subhead">Geometry Dash level requests for Twitch and YouTube</div>
   </div>
 
@@ -290,8 +392,14 @@
     <a href="" class="download-btn-soon">
       Download for Windows (bootstrapper) (soon)
     </a>
+    
+    <!-- New alternative install methods button -->
+    <button id="altInstallTrigger" class="alt-install-link">
+      Other OS / alternative install methods
+    </button>
+
     <div class="download-meta">
-      <span>~55 MB (~74 MB portable)</span>
+      <span>~45 MB (~54 MB portable)</span>
       <span>Other Platforms soon</span>
       <span>Windows 10+</span>
       <span>sha256: 61fe386c9f7b943f3dc1591df11498443cdd32822c23f7c33973280075425a86</span><br>
@@ -359,12 +467,29 @@
 
 </div>
 
+<!-- Fullscreen image overlay (existing) -->
 <div class="fullscreen-overlay" id="fullscreenOverlay">
   <img id="fullscreenImg" src="" alt="fullscreen">
 </div>
 
+<!-- NEW MODAL FOR ALTERNATIVE INSTALL METHODS -->
+<div class="modal-overlay" id="altInstallModal">
+  <div class="modal-content">
+    <h3>Other OS / alt install...</h3>
+    <p>if you're on Linux or MacOS, you can run <code>curl -fsSL https://hwgdreqs.github.io/install.sh</code> to install HwGDReqs! (rerun to update)
+
+Or if you just have a Python installation and <code>pip</code>, you could also run <code>pip install hwgdreqs</code>, thats it</p>
+    <div class="modal-buttons">
+      <button class="modal-btn" id="closeModalBtn">close</button>
+      <button class="modal-btn primary" id="copyLinuxMacBtn">copy linux/mac command</button>
+      <button class="modal-btn primary" id="copyPipBtn">copy pip command</button>
+    </div>
+  </div>
+</div>
+
 <script>
   (function() {
+    // ----- Fullscreen gallery logic (existing) -----
     const overlay = document.getElementById('fullscreenOverlay');
     const fullImg = document.getElementById('fullscreenImg');
     const galleryItems = document.querySelectorAll('.gallery-item');
@@ -401,10 +526,101 @@
     });
 
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && overlay.classList.contains('active')) {
-        closeFullscreen();
+      if (e.key === 'Escape') {
+        if (overlay.classList.contains('active')) {
+          closeFullscreen();
+        }
+        // Also close modal on Escape if open
+        const modal = document.getElementById('altInstallModal');
+        if (modal && modal.classList.contains('active')) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
       }
     });
+
+    // ----- Alternative Install Modal Logic -----
+    const altTrigger = document.getElementById('altInstallTrigger');
+    const modal = document.getElementById('altInstallModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const copyLinuxMacBtn = document.getElementById('copyLinuxMacBtn');
+    const copyPipBtn = document.getElementById('copyPipBtn');
+
+    const linuxMacCommand = 'curl -fsSL https://hwgdreqs.github.io/install.sh';
+    const pipCommand = 'pip install hwgdreqs';
+
+    function openModal() {
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal() {
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (altTrigger) {
+      altTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        openModal();
+      });
+    }
+
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', closeModal);
+    }
+
+    // Close modal when clicking on overlay background
+    if (modal) {
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+    }
+
+    // Copy function helper
+    async function copyToClipboard(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        // Optional: tiny feedback could be added, but keeping minimal.
+        console.log('Copied: ' + text);
+      } catch (err) {
+        console.error('Failed to copy: ', err);
+        // Fallback for older browsers? Not needed for modern ones.
+      }
+    }
+
+    if (copyLinuxMacBtn) {
+      copyLinuxMacBtn.addEventListener('click', function() {
+        copyToClipboard(linuxMacCommand);
+        // Visual feedback: change button text briefly
+        const originalText = copyLinuxMacBtn.textContent;
+        copyLinuxMacBtn.textContent = 'copied!';
+        copyLinuxMacBtn.disabled = true;
+        setTimeout(() => {
+          copyLinuxMacBtn.textContent = originalText;
+          copyLinuxMacBtn.disabled = false;
+        }, 1500);
+      });
+    }
+
+    if (copyPipBtn) {
+      copyPipBtn.addEventListener('click', function() {
+        copyToClipboard(pipCommand);
+        const originalText = copyPipBtn.textContent;
+        copyPipBtn.textContent = 'copied!';
+        copyPipBtn.disabled = true;
+        setTimeout(() => {
+          copyPipBtn.textContent = originalText;
+          copyPipBtn.disabled = false;
+        }, 1500);
+      });
+    }
 
   })();
 </script>
