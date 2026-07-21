@@ -191,7 +191,7 @@
 
   <div class="badge-row">
     <span class="badge">...yes its REST</span>
-    <span class="badge">localhost:6767</span>
+    <span class="badge">localhost:6767 (default, changeable)</span>
   </div>
 
   <div class="endpoint-grid">
@@ -326,7 +326,7 @@
     <div class="endpoint-card">
       <div><span class="method">GET</span><span class="path">/add</span></div>
       <div class="desc">Add a level by ID. Fetches metadata from GDBrowser. (incase youre doing a discord bot for requests from a channel...)</div>
-      <div class="params">?id=676902</div>
+      <div class="params">?id=676902</div><div class="params">?platform=anything-like-discord</div><div class="params">?message=wow</div>
       <div class="example">
         <span class="label">success</span>
 { "ok": true }
@@ -341,6 +341,16 @@
       <div><span class="method post">POST</span><span class="path">/delete</span></div>
       <div class="desc">Remove a level from the queue by ID.</div>
       <div class="params">body or query: id=12345</div>
+      <div class="example">
+        <span class="label">response</span>
+{ "ok": true }
+      </div>
+    </div>
+    
+    <div class="endpoint-card">
+      <div><span class="method post">POST</span><span class="path">/replace</span></div>
+      <div class="desc">Swap a level without changing its position from queue.</div>
+      <div class="params">body or query: id=12345 new_id=785412396</div>
       <div class="example">
         <span class="label">response</span>
 { "ok": true }
