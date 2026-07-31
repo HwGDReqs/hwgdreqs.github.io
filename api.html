@@ -185,7 +185,7 @@
 <div class="container">
 
   <div class="header">
-    <h1>HwGDReqs <span class="version">API v0.9</span></h1>
+    <h1>HwGDReqs <span class="version">API v0.17.0</span></h1>
     <div class="subhead">HTTP endpoints when the app is on - JSON responses</div>
   </div>
 
@@ -403,6 +403,35 @@
       <div class="example">
         <span class="label">response</span>
 { "ok": true }
+      </div>
+    </div>
+    
+    <div class="endpoint-card">
+      <div><span class="method post">POST</span><span class="path">/requests-off</span></div>
+      <div class="desc">Turn off requests.</div>
+      <div class="params">?send-twitch=true/false</div>
+      <div class="example">
+        <span class="label">response</span>
+{ "ok": true }
+      </div>
+    </div>
+    
+    <div class="endpoint-card">
+      <div><span class="method post">POST</span><span class="path">/requests-on</span></div>
+      <div class="desc">Turn on requests.</div>
+      <div class="params">?send-twitch=true/false</div>
+      <div class="example">
+        <span class="label">response</span>
+{ "ok": true }
+      </div>
+    </div>
+    
+    <div class="endpoint-card">
+      <div><span class="method get">GET</span><span class="path">/requests-state</span></div>
+      <div class="desc">See requests status.</div>
+      <div class="example">
+        <span class="label">response</span>
+{ "enabled": true }
       </div>
     </div>
 
