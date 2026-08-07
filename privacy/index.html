@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>HwGDReqs · Privacy Policy</title>
+  <link rel="stylesheet" href="https://www.nerdfonts.com/assets/css/webfont.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background-color: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 520px;
+      background-image: url('../bg.png');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+      z-index: 0;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 950px;
+      padding: 2.5rem 2rem 2rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 280px;
+    }
+
+    h1 {
+      font-family: 'Google Sans', 'Segoe UI', system-ui, sans-serif;
+      font-size: 3.4rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #0055cc;
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .version-badge {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #0055cc;
+      background: rgba(0,85,204,0.08);
+      padding: 0.25rem 0.9rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      border: 1px solid rgba(0,85,204,0.2);
+    }
+
+    .privacy-content {
+      width: 100%;
+      max-width: 850px;
+      text-align: left;
+      padding: 1.5rem 2rem;
+      margin: 0.5rem 0 1.5rem;
+      border: 1px solid rgba(0,85,204,0.1);
+      background: rgba(0,85,204,0.02);
+    }
+
+    .privacy-content h2 {
+      color: #003d99;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 1.8rem;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.2px;
+    }
+
+    .privacy-content h2:first-child {
+      margin-top: 0;
+    }
+
+    .privacy-content p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+      color: #2c2c2c;
+    }
+
+    .privacy-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 1.2rem 0;
+    }
+
+    .privacy-content li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      padding: 0.5rem 0.8rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      border-bottom: 1px solid rgba(0,85,204,0.05);
+    }
+
+    .privacy-content li:last-child {
+      border-bottom: none;
+    }
+
+    .privacy-content li strong {
+      color: #003d99;
+      flex-shrink: 0;
+    }
+
+    .privacy-content code {
+      background: rgba(0,85,204,0.08);
+      padding: 0.1rem 0.5rem;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #003d99;
+    }
+
+    .highlight-box {
+      background: rgba(0,85,204,0.06);
+      border-left: 4px solid #0055cc;
+      padding: 1.2rem 1.5rem;
+      margin: 1.2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .highlight-box strong {
+      color: #003d99;
+    }
+
+    .privacy-content a {
+      color: #0055cc;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .privacy-content a:hover {
+      color: #003d99;
+      text-decoration: underline;
+    }
+
+    .btn {
+      background: #0055cc;
+      color: white;
+      text-decoration: none;
+      padding: 0.7rem 1.8rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s ease;
+      border: 1px solid transparent;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    .btn i { font-size: 1.1rem; }
+    .btn:hover { background: #003d99; }
+
+    .footer {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8rem;
+      font-size: 0.95rem;
+      padding: 1rem 2.2rem;
+      color: #1e1e1e;
+      width: 100%;
+    }
+    .footer a {
+      color: #0055cc;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color 0.2s ease;
+    }
+    .footer a:hover { color: #003d99; text-decoration: underline; }
+    .footer i { font-size: 1.2rem; }
+
+    .made-by {
+      margin-top: 1rem;
+      font-weight: 500;
+      color: #2b2b2b;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .made-by a {
+      color: #0055cc;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .made-by a:hover {
+      text-decoration: underline;
+    }
+    .made-by img {
+      width: 24px;
+      height: 24px;
+      object-fit: cover;
+      border-radius: 0%;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 768px) {
+      .hero-image { height: 350px; }
+      .content { margin-top: 180px; padding: 1.5rem 1rem; }
+      h1 { font-size: 2.2rem; }
+      .privacy-content { padding: 1rem; }
+      .privacy-content h2 { font-size: 1.1rem; }
+      .footer { gap: 1rem; font-size: 0.85rem; padding: 0.8rem 1rem; flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .content { margin-top: 150px; padding: 1rem 0.5rem; }
+      h1 { font-size: 1.8rem; }
+      .privacy-content { padding: 0.8rem; }
+      .privacy-content li { font-size: 0.9rem; padding: 0.4rem 0.5rem; }
+      .highlight-box { padding: 0.8rem 1rem; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #1a1a1a; color: #e6e6e6; }
+      .hero-image { opacity: 0.7; }
+      h1 { color: #5c9cff; }
+      .version-badge { color: #5c9cff; background: rgba(92,156,255,0.15); border-color: rgba(92,156,255,0.3); }
+      .privacy-content { border-color: rgba(92,156,255,0.2); background: rgba(92,156,255,0.05); }
+      .privacy-content h2 { color: #8cb4ff; }
+      .privacy-content p { color: #ccc; }
+      .privacy-content li { border-color: rgba(92,156,255,0.1); }
+      .privacy-content li strong { color: #8cb4ff; }
+      .privacy-content code { background: rgba(92,156,255,0.15); color: #c2d9ff; }
+      .privacy-content a { color: #8cb4ff; }
+      .privacy-content a:hover { color: #a0c4ff; }
+      .highlight-box { background: rgba(92,156,255,0.1); border-left-color: #5c9cff; }
+      .highlight-box strong { color: #8cb4ff; }
+      .btn { background: #1f6feb; color: white; }
+      .btn:hover { background: #1a5fcc; }
+      .footer a { color: #8cb4ff; }
+      .footer a:hover { color: #a0c4ff; }
+      .made-by { color: #ddd; }
+      .made-by a { color: #8cb4ff; }
+      .made-by a:hover { color: #a0c4ff; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-image" aria-hidden="true"></div>
+
+  <div class="content">
+    <h1>Privacy Policy</h1>
+    <div class="version-badge">Last updated: July 8, 2026</div>
+
+    <div class="privacy-content">
+      <h2>Overview</h2>
+      <p>
+        HwGDReqs is a desktop application for Geometry Dash streamers that reads
+        level IDs from Twitch and YouTube chat. This privacy policy explains what
+        data the application accesses and how it is handled.
+      </p>
+
+      <div class="highlight-box">
+        <strong>TL;DR:</strong> This application does not collect, store, or transmit
+        any personal data. No analytics. No tracking. No telemetry. What happens on
+        your machine stays on your machine.
+      </div>
+
+      <h2>What the Application Accesses</h2>
+      <p>HwGDReqs connects to the following services solely to perform its core function:</p>
+      <ul>
+        <li>
+          <strong>Twitch API</strong> &middot; Used to read chat messages from your Twitch
+          channel. You authenticate via the device flow; the application only
+          receives an access token and stores it locally only.
+        </li>
+        <li>
+          <strong>YouTube Chat</strong> &middot; Uses pytchat to fetch live
+          chat messages from YouTube. No login is required; the application only
+          needs the channel username, THATS IT.
+        </li>
+        <li>
+          <strong>GDBrowser API</strong> &middot; Fetches level metadata (name, difficulty,
+          length, likes/dislikes) when a level ID is submitted. (GD Colon made this)
+        </li>
+        <li>
+          <strong>Level Thumbnails API</strong> &middot; Retrieves thumbnail images for
+          levels displayed in the queue. (by Prevter)
+        </li>
+      </ul>
+
+      <h2>What the Application Does NOT Do</h2>
+      <ul>
+        <li>Does not collect any personal information</li>
+        <li>Does not store chat logs or message history</li>
+        <li>Does not send any data to remote servers (other than the API calls listed above)</li>
+        <li>Does not include analytics, crash reporting, or telemetry</li>
+        <li>Does not track your usage or behavior</li>
+        <li>Does not share any data with third parties</li>
+      </ul>
+
+      <h2>Local Storage</h2>
+      <p>
+        The application stores the following data locally on your machine:
+      </p>
+      <ul>
+        <li>Queue state (levels currently in the request queue)</li>
+        <li>Queue History</li>
+        <li>Blacklist settings (blocked levels, authors, or requesters)</li>
+        <li>Application preferences (difficulty filters, length filters, etc.)</li>
+        <li>Thumbnail cache (downloaded level images) (Temporary)</li>
+      </ul>
+      <p>
+        All of this data is stored in a local configuration file on your computer.
+        No data from these files is ever transmitted externally.
+      </p>
+
+      <h2>Open Source Transparency</h2>
+      <p>
+        HwGDReqs is fully open source under the
+        <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GPLv3 license</a>.
+        You can review the complete source code on
+        <a href="https://github.com/HwGDReqs/HwGDReqs" target="_blank">GitHub</a>
+        to verify exactly what the application does.
+      </p>
+
+      <h2>Third-Party Services</h2>
+      <p>
+        The application communicates with the following external APIs. Please refer
+        to their respective privacy policies for information on how they handle data:
+      </p>
+      <ul>
+        <li><a href="https://www.twitch.tv/p/legal/privacy-policy/" target="_blank">Twitch Privacy Policy</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank">Google/YouTube Privacy Policy</a></li>
+        <li><a href="https://gdbrowser.com/" target="_blank">GDBrowser</a> (no official privacy policy published)</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>
+        If you have any questions about this privacy policy or the application,
+        you can open an issue on the
+        <a href="https://github.com/HwGDReqs/HwGDReqs/issues" target="_blank">GitHub repository</a>
+        or contact the developer directly via GitHub.
+      </p>
+
+      <a href="../index.html" class="btn"><i class="nf nf-md-arrow_left"></i> Back to main page</a>
+    </div>
+
+    <div class="made-by">
+      Made by <a href="https://discord.com/users/1131020856827580508" target="_blank"><img src="../assets/malikhw47.png" alt="MalikHw47"> MalikHw47</a>
+    </div>
+
+    <div class="footer">
+      <a href="https://github.com/HwGDReqs" target="_blank"><i class="nf nf-md-github"></i> GitHub</a>
+      <a href="https://discord.com/users/1131020856827580508" target="_blank"><i class="nf nf-md-discord"></i> Discord</a>
+      <a href="https://www.youtube.com/@MalikHw47" target="_blank"><i class="nf nf-md-youtube"></i> YouTube</a>
+      <a href="https://www.twitch.tv/malikhw47" target="_blank"><i class="nf nf-md-twitch"></i> Twitch</a>
+      <a href="https://malikhw.github.io/donate" target="_blank"><i class="nf nf-fa-dollar"></i> Donate</a>
+    </div>
+  </div>
+</body>
+</html>

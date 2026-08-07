@@ -1,641 +1,814 @@
 <!DOCTYPE html>
-<html> this page will be soon updated :3
+<html lang="en">
 <head>
-  <title>HwGDReqs – GD Level Requests for Streamers</title>
-  <link rel="icon" href="assets/logo.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>HwGDReqs · GD level requests</title>
+  <link rel="stylesheet" href="https://www.nerdfonts.com/assets/css/webfont.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/logo.png">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      background: #f5f5f5;
-      color: #333;
-      padding: 40px 20px;
-    }
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 40px 48px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    }
-
-    .header h1 {
-      font-size: 2.6rem;
-      font-weight: 300;
-      color: #333;
-      letter-spacing: -0.5px;
-    }
-    .header .version {
-      font-weight: 400;
-      color: #999;
-      font-size: 1rem;
-      margin-left: 8px;
-    }
-    .subhead {
-      font-size: 1.1rem;
-      color: #666;
-      margin-top: 4px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid #eee;
-    }
-
-    .badge-row {
-      margin: 18px 0 24px 0;
-    }
-    .badge {
-      display: inline-block;
-      background: #eee;
-      padding: 4px 14px;
-      font-size: 0.75rem;
-      color: #555;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-right: 6px;
-      border: 1px solid #ddd;
-    }
-
-    .hero {
-      background: #fafafa;
-      padding: 30px 32px;
-      border: 1px solid #e5e5e5;
-      margin-bottom: 30px;
-    }
-    .hero p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #444;
-      margin-bottom: 22px;
-      max-width: 600px;
-    }
-
-    .download-btn {
-      display: inline-block;
-      background: #0078d7;
-      color: #fff;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 12px 36px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: background 0.15s;
-      margin-bottom: 8px;
-    }
-    .download-btn:hover {
-      background: #005a9e;
-    }
-
-    .download-btn-soon {
-      display: inline-block;
-      background: #004075;
-      color: #fff;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 12px 36px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: background 0.15s;
-      margin-bottom: 8px;
-    }
-
-    /* Style for the new alternative installs link */
-    .alt-install-link {
-      display: block;
-      margin-top: 14px;
-      font-size: 0.9rem;
-      color: #0078d7;
-      text-decoration: underline;
-      cursor: pointer;
-      background: none;
-      border: none;
+    * {
+      margin: 0;
       padding: 0;
-      font-family: inherit;
-    }
-    .alt-install-link:hover {
-      color: #005a9e;
+      box-sizing: border-box;
     }
 
-    .download-meta {
-      margin-top: 12px;
-      font-size: 0.8rem;
-      color: #888;
-    }
-    .download-meta span {
+    .geode-icon {
+      width: 1.2em;
+      height: 1.2em;
       display: inline-block;
-      margin-right: 18px;
+      vertical-align: -0.2em;
+      flex-shrink: 0;
+      fill: currentColor;
     }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 12px;
-      margin: 28px 0 20px 0;
-    }
-    .feature-card {
-      background: #fafafa;
-      border: 1px solid #e5e5e5;
-      padding: 16px 18px;
-    }
-    .feature-card h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 4px;
-    }
-    .feature-card p {
-      font-size: 0.85rem;
-      color: #666;
-      line-height: 1.5;
-    }
-    .feature-card code {
-      background: #eee;
-      padding: 1px 8px;
-      font-size: 0.8rem;
-      color: #333;
-      border: 1px solid #ddd;
-    }
-
-    .trust {
-      border-top: 1px solid #e5e5e5;
-      padding-top: 20px;
-      margin-top: 20px;
-      font-size: 0.85rem;
-      color: #777;
-    }
-    .trust span {
-      margin-right: 28px;
-    }
-    .trust strong {
-      color: #444;
-      font-weight: 600;
-    }
-    .trust a {
-      color: #0078d7;
-      text-decoration: none;
-    }
-    .trust a:hover {
-      text-decoration: underline;
-    }
-
-    .screenshot-section {
-      margin: 30px 0 20px 0;
-      border-top: 1px solid #e5e5e5;
-      padding-top: 24px;
-    }
-    .screenshot-section h2 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: #333;
-      margin-bottom: 14px;
-      letter-spacing: -0.3px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-    .gallery-item {
-      border: 1px solid #ddd;
-      background: #fafafa;
-      cursor: pointer;
-      transition: border 0.1s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .gallery-item:hover {
-      border-color: #999;
-    }
-    .gallery-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .fullscreen-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.92);
+    /* popup overlay */
+    .popup-overlay {
       display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      cursor: pointer;
-      padding: 20px;
-    }
-    .fullscreen-overlay.active {
-      display: flex;
-    }
-    .fullscreen-overlay img {
-      max-width: 95%;
-      max-height: 95%;
-      border: 1px solid #444;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-      object-fit: contain;
-      background: #111;
-    }
-
-    /* Modal / Popup styles - keeping consistent with existing design */
-    .modal-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      align-items: center;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 2000;
       justify-content: center;
-      z-index: 10000;
-      padding: 20px;
+      align-items: center;
     }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal-content {
+    .popup-overlay.active { display: flex; }
+    .popup-card {
       background: #fff;
-      max-width: 520px;
-      width: 100%;
-      border: 1px solid #ccc;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-      padding: 28px 28px 22px;
-      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      color: #333;
+      color: #1a1a1a;
+      max-width: 480px;
+      width: 90%;
+      padding: 2rem 1.8rem;
+      border-radius: 0px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      position: relative;
+      text-align: left;
     }
-    .modal-content h3 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      margin-bottom: 18px;
-      color: #222;
-      letter-spacing: -0.3px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
+    .popup-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0.5rem 0 1.5rem;
     }
-    .modal-content p {
+    .popup-card code {
+      background: #f0f4ff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0px;
+      font-family: monospace;
       font-size: 0.95rem;
-      line-height: 1.55;
-      color: #444;
-      margin-bottom: 24px;
-      white-space: pre-line;
-    }
-    .modal-content code {
-      background: #f0f0f0;
-      padding: 2px 8px;
-      font-size: 0.85rem;
-      color: #c7254e;
-      border: 1px solid #e1e1e1;
+      display: inline-block;
       word-break: break-all;
     }
-    .modal-buttons {
+    .popup-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 0.8rem;
+      align-items: center;
       justify-content: flex-end;
-      border-top: 1px solid #f0f0f0;
-      padding-top: 18px;
+      margin-top: 0.5rem;
     }
-    .modal-btn {
-      background: #eaeaea;
-      border: 1px solid #ccc;
-      color: #333;
-      font-weight: 500;
-      font-size: 0.85rem;
-      padding: 8px 20px;
+    .popup-actions button {
+      background: #0055cc;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      font-weight: 600;
+      border-radius: 0px;
       cursor: pointer;
-      transition: background 0.15s;
-      font-family: inherit;
+      font-size: 0.9rem;
+      transition: background 0.2s;
     }
-    .modal-btn:hover {
-      background: #dcdcdc;
+    .popup-actions button:hover { background: #003d99; }
+    .popup-actions .copy-btn {
+      background: #e6eef9;
+      color: #0055cc;
     }
-    .modal-btn.primary {
-      background: #0078d7;
-      border-color: #0078d7;
-      color: #fff;
+    .popup-actions .copy-btn:hover { background: #d0dff5; }
+    .popup-actions .close-btn {
+      background: transparent;
+      color: #555;
+      border: 1px solid #ccc;
     }
-    .modal-btn.primary:hover {
-      background: #005a9e;
+    .popup-actions .close-btn:hover { background: #f0f0f0; }
+
+    /* tooltip wrapper */
+    .tooltip-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: help;
+    }
+    .tooltip-wrapper .tooltip-text {
+      visibility: hidden;
+      opacity: 0;
+      width: 340px;
+      background: #1a1a1a;
+      color: #eee;
+      text-align: left;
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      font-weight: 400;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      position: absolute;
+      z-index: 100;
+      bottom: 140%;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: opacity 0.2s, visibility 0.2s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      white-space: normal;
+      word-break: break-word;
+      pointer-events: none;
+    }
+    .tooltip-wrapper .tooltip-text::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -6px;
+      border-width: 6px;
+      border-style: solid;
+      border-color: #1a1a1a transparent transparent transparent;
+    }
+    .tooltip-wrapper:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+    @media (max-width: 600px) {
+      .tooltip-wrapper .tooltip-text {
+        width: 260px;
+        font-size: 0.8rem;
+        left: 0;
+        transform: translateX(0);
+        bottom: 130%;
+      }
+      .tooltip-wrapper .tooltip-text::after { left: 20px; }
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background-color: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 520px;
+      background-image: url('bg.png');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+      z-index: 0;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 950px;
+      padding: 2.5rem 2rem 2rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 280px;
+    }
+
+    h1 {
+      font-family: 'Google Sans', 'Segoe UI', system-ui, sans-serif;
+      font-size: 3.4rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #0055cc;
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .version-badge {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #0055cc;
+      background: rgba(0,85,204,0.08);
+      padding: 0.25rem 0.9rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      border: 1px solid rgba(0,85,204,0.2);
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #2c2c2c;
+      padding: 0.6rem 1.8rem;
+      margin: 0.5rem 0 1.8rem;
+      text-align: center;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 2.2rem;
+      padding: 1.2rem 2rem;
+      color: #1e1e1e;
+    }
+
+    .download-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      margin: 1.2rem 0 2.2rem;
+      padding: 1.5rem 1.8rem;
+    }
+
+    .btn {
+      background: #0055cc;
+      color: white;
+      text-decoration: none;
+      padding: 0.7rem 1.4rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s ease;
+      border: 1px solid transparent;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .btn i { font-size: 1.1rem; }
+    .btn:hover { background: #003d99; }
+    .btn-outline {
+      background: transparent;
+      color: #0055cc;
+      border: 2px solid #0055cc;
+    }
+    .btn-outline:hover {
+      background: rgba(0,85,204,0.08);
+      color: #003d99;
+      border-color: #003d99;
+    }
+    .btn-alt {
+      background: #6c3b9e;
+      border-color: #6c3b9e;
+      color: white;
+    }
+    .btn-alt:hover { background: #542f7a; }
+
+    h2, h4 {
+      color: #003d99;
+      margin-top: 1.8rem;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+    h2 { font-size: 1.8rem; margin-bottom: 0.2rem; }
+    h4 { font-size: 1.5rem; margin-top: 2.2rem; display: flex; align-items: center; gap: 0.5rem; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 1.5rem;
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 1.05rem;
+      padding: 0.7rem 1.2rem;
+      border: 1px solid rgba(0,85,204,0.1);
+    }
+    li i, li .geode-icon {
+      color: #0055cc;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+    li i { font-size: 1.2rem; }
+
+    .screenshots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.8rem 0 2rem;
+    }
+    .gallery-item { cursor: pointer; display: inline-block; }
+    .gallery-item img {
+      width: 130px;
+      height: auto;
+      border: 1px solid rgba(0,85,204,0.25);
+      background: #f0f4ff;
+      display: block;
+    }
+
+    .thanks-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+      justify-content: center;
+      align-items: center;
+      margin: 0.8rem 0 1.2rem;
+      font-weight: 500;
+    }
+    .thanks-user {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0,85,204,0.08);
+      padding: 0.35rem 1.2rem;
+      color: #003d99;
+    }
+    .thanks-user img {
+      width: 24px;
+      height: 24px;
+      object-fit: cover;
     }
 
     .footer {
-      margin-top: 32px;
-      padding-top: 16px;
-      border-top: 1px solid #eee;
-      text-align: center;
-      font-size: 0.75rem;
-      color: #aaa;
+      margin-top: 2.5rem;
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-wrap: wrap;
-      gap: 10px 20px;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8rem;
+      font-size: 0.95rem;
+      padding: 1rem 2.2rem;
+      color: #1e1e1e;
     }
     .footer a {
-      color: #888;
+      color: #0055cc;
       text-decoration: none;
-    }
-    .footer a:hover {
-      color: #333;
-    }
-    .donate-btn {
-      display: inline-block;
-      color: #fff;
       font-weight: 600;
-      font-size: 0.75rem;
-      padding: 6px 18px;
-      text-decoration: none;
-      transition: background 0.15s;
-      letter-spacing: 0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color 0.2s ease;
+    }
+    .footer a:hover { color: #003d99; text-decoration: underline; }
+    .footer i { font-size: 1.2rem; }
+
+    .made-by {
+      margin-top: 1rem;
+      font-weight: 500;
+      color: #2b2b2b;
+    }
+    .made-by a {
+      color: #0055cc;
+      font-weight: 700;
     }
 
-    @media (max-width: 700px) {
-      .container { padding: 24px 16px; }
-      .gallery { grid-template-columns: repeat(2, 1fr); }
-      .modal-content { padding: 20px 16px; }
+    .privacy-link {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: #666;
+      text-decoration: none;
+      transition: color 0.2s ease;
     }
-    @media (max-width: 450px) {
-      .gallery { grid-template-columns: 1fr; }
+    .privacy-link:hover { color: #0055cc; text-decoration: underline; }
+
+    .made-by img {
+      width: 24px;
+      height: 24px;
+      object-fit: cover;
+      border-radius: 0%;
+      vertical-align: middle;
+    }
+
+    .download-count-badge {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #0055cc;
+      background: rgba(0,85,204,0.06);
+      padding: 0.2rem 0.9rem;
+      border: 1px solid rgba(0,85,204,0.15);
+      margin-left: 0.5rem;
+      display: inline-block;
+    }
+
+    @media (max-width: 768px) {
+      .hero-image { height: 350px; }
+      .content { margin-top: 180px; padding: 1.5rem 1rem; }
+      h1 { font-size: 2.2rem; }
+      .subtitle { font-size: 1rem; padding: 0.5rem 1rem; }
+      .description { font-size: 0.95rem; padding: 1rem; }
+      .download-grid { padding: 1rem 0.5rem; gap: 0.6rem; }
+      .btn { font-size: 0.8rem; padding: 0.6rem 1rem; }
+      h4 { font-size: 1.25rem; }
+      ul { max-width: 100%; }
+      li { font-size: 0.9rem; padding: 0.6rem 0.8rem; }
+      .gallery-item img { width: 100px; }
+      .footer { gap: 1rem; font-size: 0.85rem; padding: 0.8rem 1rem; flex-direction: column; }
+      .thanks-list { gap: 0.5rem 0.8rem; }
+      .thanks-user { padding: 0.3rem 0.8rem; font-size: 0.9rem; }
+    }
+    @media (max-width: 480px) {
+      .content { margin-top: 150px; padding: 1rem 0.5rem; }
+      h1 { font-size: 1.8rem; }
+      .download-grid { flex-direction: column; align-items: stretch; width: 100%; }
+      .btn { justify-content: center; text-align: center; }
+      .gallery-item img { width: 80px; }
+      .screenshots { gap: 0.5rem; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #1a1a1a; color: #e6e6e6; }
+      .hero-image { opacity: 0.7; }
+      h1 { color: #5c9cff; }
+      .version-badge { color: #5c9cff; background: rgba(92,156,255,0.15); border-color: rgba(92,156,255,0.3); }
+      .subtitle, .description, .download-grid, .footer, .made-by { color: #ddd; }
+      .btn { background: #1f6feb; color: white; }
+      .btn-outline { background: transparent; border-color: #5c9cff; color: #5c9cff; }
+      .btn-outline:hover { background: rgba(92,156,255,0.1); }
+      h2, h4 { color: #8cb4ff; }
+      li { border-color: rgba(92,156,255,0.25); }
+      li i, li .geode-icon { color: #5c9cff; }
+      .thanks-user { background: rgba(92,156,255,0.15); color: #c2d9ff; }
+      .footer a, .made-by a { color: #8cb4ff; }
+      .footer a:hover { color: #a0c4ff; }
+      .gallery-item img { border-color: rgba(92,156,255,0.4); }
+      .privacy-link { color: #888; }
+      .privacy-link:hover { color: #8cb4ff; }
+      .popup-card { background: #2a2a2a; color: #eee; }
+      .popup-card code { background: #3a3a4a; color: #d0d0e0; }
+      .popup-actions .copy-btn { background: #3a4a6a; color: #b0d0ff; }
+      .popup-actions .copy-btn:hover { background: #4a5a8a; }
+      .popup-actions .close-btn { color: #bbb; border-color: #555; }
+      .popup-actions .close-btn:hover { background: #333; }
+      .tooltip-wrapper .tooltip-text { background: #2c2c2c; color: #eee; }
+      .tooltip-wrapper .tooltip-text::after { border-color: #2c2c2c transparent transparent transparent; }
+      .download-count-badge { color: #8cb4ff; background: rgba(92,156,255,0.1); border-color: rgba(92,156,255,0.2); }
     }
   </style>
 </head>
 <body>
+  <div class="hero-image" aria-hidden="true"></div>
 
-<div class="container">
-
-  <div class="header">
-    <h1>HwGDReqs <span class="version">0.24.0 pre release</span></h1>
-    <div class="subhead">Geometry Dash level requests for Twitch and YouTube</div>
-  </div>
-
-  <div class="badge-row">
-    <span class="badge">Twitch</span>
-    <span class="badge">Youtube</span>
-    <span class="badge">Geometry Dash</span>
-    <span class="badge">1.0.0 is SOON</span>
-  </div>
-
-  <div class="hero">
-    <p>
-      Listen for level IDs in chat. Queue them. Filter by difficulty or length.
-      Blacklist levels, authors, or requesters. Full control, zero alt tabbing(soon).
-    </p>
-    <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-setup.exe" class="download-btn">
-      Windows 10+
-    </a>
-    <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-windows-portable.zip" class="download-btn">
-      Windows (Portable)
-    </a>
-    <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-MacOS-intel.dmg" class="download-btn-soon">
-      MacOS 15+ (Intel)
-    </a>
-    <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-MacOS-silicon.dmg" class="download-btn-soon">
-      MacOS 14+ (Silicon)
-    </a>
-    <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-setup-online.exe" class="download-btn-soon">
-      Windows 10+ (online installer)
-    </a>
-
-    <!-- New alternative install methods button -->
-    <button id="altInstallTrigger" class="alt-install-link">
-      Other OS / alternative install methods
-    </button>
-
-    <div class="download-meta">
-      <span>~45 MB (~54 MB portable)</span>
-      <span>Proper linux packaging soon</span>
-      <span>Windows 10+</span>
-      <span>NOW everything builds in github actions :3 so you can check ts is safe</span><br>
+  <div class="popup-overlay" id="altPopup">
+    <div class="popup-card">
+      <p>There won't be packaging for linux🥀 BUT if you got pip/pipx you could do <code id="altCmd">pipx install hwgdreqs</code> and it gets installed</p>
+      <div class="popup-actions">
+        <button class="copy-btn" id="copyCmdBtn"><i class="nf nf-md-content_copy"></i> Copy</button>
+        <button class="close-btn" id="closePopupBtn">Close</button>
+      </div>
     </div>
   </div>
 
-  <div class="screenshot-section">
-    <h2>Interface preview</h2>
-    <div class="gallery" id="gallery">
-      <div class="gallery-item"><img src="assets/1.png" alt="screenshot 1"></div>
-      <div class="gallery-item"><img src="assets/2.png" alt="screenshot 2"></div>
-      <div class="gallery-item"><img src="assets/3.png" alt="screenshot 3"></div>
-      <div class="gallery-item"><img src="assets/4.png" alt="screenshot 4"></div>
+  <div class="content">
+    <h1>HwGDReqs</h1>
+    <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem;">
+      <span class="version-badge" id="versionBadge">v0.24.0</span>
+      <span class="download-count-badge" id="downloadCountBadge"><i class="nf nf-fa-download"></i> <span id="downloadCount">0</span> total downloads</span>
     </div>
-    <p style="font-size:0.75rem; color:#999; margin-top:8px;">Click any image to fullscreen. Click again to close.</p>
+    <div class="subtitle">
+      <i class="nf nf-md-controller"></i> Geometry Dash level requests for Twitch & YouTube
+    </div>
+
+    <div class="description">
+      Listen for level IDs in chat. Queue them. Filter by difficulty or length.<br>
+      Blacklist levels, authors, or requesters. Full control, zero alt tabbing (with the geode mod).
+    </div>
+
+    <div class="download-grid" id="downloadGrid">
+      <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-setup.exe" class="btn">
+        <i class="nf nf-fa-windows"></i> Windows installer
+      </a>
+      <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-setup-online.exe" class="btn btn-outline">
+        <i class="nf nf-fa-windows"></i> Online installer
+      </a>
+      <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-windows-portable.zip" class="btn btn-outline">
+        <i class="nf nf-fa-file_archive_o"></i> Windows Portable
+      </a>
+      <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-MacOS-intel.dmg" class="btn">
+        <i class="nf nf-fa-apple"></i> Mac Intel
+      </a>
+      <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-MacOS-silicon.dmg" class="btn">
+        <i class="nf nf-fa-apple"></i> Mac Silicon
+      </a>
+      <button class="btn btn-alt" id="altOsBtn">
+        <i class="nf nf-md-linux"></i> Alternative OS
+      </button>
+    </div>
+
+    <h4><i class="nf nf-md-star"></i> Features</h4>
+    <ul>
+      <li><i class="nf nf-md-twitch"></i><i class="nf nf-md-youtube"></i> Twitch + YouTube</li>
+      <li class="tooltip-wrapper">
+        <svg class="geode-icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Geode</title><path d="M12 0c-.30206 0-.60438.09583-.85742.28906L.5957 8.34375c-.4705.3593-.66703.97346-.49218 1.53906l4.05664 13.1211c.1829.59168.7303.99609 1.3496.99609h12.98047c.61931 0 1.1667-.40441 1.34961-.9961l4.05664-13.12109c.17485-.5656-.02168-1.17975-.49218-1.53906l-.97266-.74219-1.11914 3.51758-3.07031 9.99024c-.12005.3903-.48032.65624-.88868.65624H6.57813c-.40836 0-.76863-.26593-.88868-.65624l-3.36132-10.9336c-.11419-.37133.01411-.77514.32226-1.01172l8.74805-6.7168a.93.93 0 0 1 .10937-.07226L13.55273.82031l-.6953-.53125C12.60437.09583 12.30205 0 12 0m.06836 4.75781c-.16254 0-.32493.05197-.46094.15625l-6.52344 5.0039c-.25142.19277-.35688.52145-.26367.82423l.4336 1.4082 2.19726-1.61914 4.31445-3.37695c.13717-.10727.33159-.10727.46875 0l4.70508 3.68164c.12315.09628.17407.25661.1289.40625l-1.80858 5.99219c-.0483.15993-.19619.26953-.36329.26953H9.10352a.377.377 0 0 1-.07618-.0078H6.9004l.42774 1.39257c.0979.3179.39196.53516.7246.53516h8.0332c.33265 0 .62477-.21725.72266-.53516l2.50977-8.14648c.09321-.30278-.01225-.63146-.26367-.82422l-6.5254-5.00392c-.136-.10428-.29839-.15625-.46093-.15625Z"/></svg>
+        Geode Integration mod (installed from the desktop app)
+        <span class="tooltip-text">
+          "Why this will NOT make it to the Geode in-game browser/index? "
+          because I am index banned, and since Someone else made the geode mod
+          they (geode index staff) thought he's an alt of me so the mod got
+          rejected so uh, yeah... you can not use this if you don't trust
+          shit off the internet and thats valid LMAO, just to be sure, the
+          source code of both the app + geode mod are public, you can audit/see
+          /send the code to a clanker and confirm it's safe alr im tired writing ts
+        </span>
+      </li>
+      <li><i class="nf nf-md-account_edit"></i> People can Add, remove, replace. Only the requester can modify their own levels.</li>
+      <li><i class="nf nf-md-cancel"></i> Block levels, authors, or requesters. Keep the chat clean.</li>
+      <li><i class="nf nf-md-chart_bar"></i> Difficulty, length, and auto-block disliked levels.</li>
+      <li><i class="nf nf-md-image_area"></i> Live previews via the Level Thumbnails API. Cached...</li>
+      <li><i class="nf nf-md-api"></i> REST HTTP API for the geode mod and other apps (customizable port with local network)</li>
+      <li><i class="nf nf-md-chat_processing"></i> !del and !replace (and !queue and !whereami <b>twitch only</b>)</li>
+      <li><i class="nf nf-md-account_cancel"></i> Ability to ban requesters off your twitch chat (even in the geode mod)</li>
+      <li><i class="nf nf-md-crown"></i> Subs prio/only, superchat prio/only, members prio/only</li>
+      <li><i class="nf nf-md-monitor_screenshot"></i> Pop out queue button for OBS window capture, change text scale & make transparent</li>
+      <li><i class="nf nf-md-harddisk"></i> Everything runs inside your PC</li>
+    </ul>
+
+    <p style="margin:0.5rem 0 0.2rem; font-style:italic; color:#0055cc;">Started working on this at July 8, 2026</p>
+
+    <h4><i class="nf nf-md-image_multiple"></i> Screenshots</h4>
+    <div class="screenshots">
+      <div class="gallery-item"><img src="assets/1.png" alt="Screenshot 1" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/2.png" alt="Screenshot 2" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/3.png" alt="Screenshot 3" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/4.png" alt="Screenshot 4" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/5.png" alt="Screenshot 5" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/6.png" alt="Screenshot 6" loading="lazy"></div>
+    </div>
+
+    <h4><i class="nf nf-fa-dollar"></i> Thanks to early users</h4>
+    <div class="thanks-list">
+      <div class="thanks-user"><img src="assets/tekain.png" alt="tekain" loading="lazy"><span>tekain</span></div>
+      <div class="thanks-user"><img src="assets/seamon.png" alt="Seamon" loading="lazy"><span>Seamon</span></div>
+      <div class="thanks-user"><img src="assets/purblic.png" alt="purblic" loading="lazy"><span>purblic</span></div>
+      <div class="thanks-user"><span>yes thats it (dm proof on Discord)</span></div>
+    </div>
+
+    <div class="made-by">
+      Made by <a href="https://discord.com/users/1131020856827580508" target="_blank"><img src="assets/malikhw47.png" alt="MalikHw47"> MalikHw47</a>
+    </div>
+
+    <div class="footer">
+      <a href="https://github.com/HwGDReqs" target="_blank"><i class="nf nf-md-github"></i> GitHub</a>
+      <a href="https://discord.com/users/1131020856827580508" target="_blank"><i class="nf nf-md-discord"></i> Discord</a>
+      <a href="https://www.youtube.com/@MalikHw47" target="_blank"><i class="nf nf-md-youtube"></i> YouTube</a>
+      <a href="https://www.twitch.tv/malikhw47" target="_blank"><i class="nf nf-md-twitch"></i> Twitch</a>
+      <a href="https://malikhw.github.io/donate" target="_blank"><i class="nf nf-fa-dollar"></i> Donate</a>
+    </div>
+
+    <a href="privacy/index.html" class="privacy-link">Privacy Policy</a>
+    <div style="height: 1.5rem;"></div>
   </div>
 
-  <div class="features">
-    <div class="feature-card">
-      <h3>Twitch + YouTube</h3>
-      <p>Listens to both chats. Device flow for Twitch, no login for YouTube.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Queue management</h3>
-      <p>Add, remove, replace. Only the requester can modify their own levels.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Blacklist system</h3>
-      <p>Block levels, authors, or requesters. Keep the chat clean.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Filters</h3>
-      <p>Difficulty, length, and auto-block disliked levels.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Thumbnails</h3>
-      <p>Live previews via the Level Thumbnails API. Cached...</p>
-    </div>
-    <div class="feature-card">
-      <h3>API</h3>
-      <p>REST HTTP API for mods and other apps... (customizable port with local network)</p>
-    </div>
-    <div class="feature-card">
-      <h3>Chat Commands</h3>
-      <p><code>!del</code> and <code>!replace</code> (and <code>!queue</code> and <code>!whereami</code> <b>twitch only</b>)</p>
-    </div>
-    <div class="feature-card">
-      <h3>Twitch Moderation</h3>
-      <p>Ability to ban requesters off your twitch chat</p>
-    </div>
-    <div class="feature-card">
-      <h3>Twitch Options:</h3>
-      <p>subs priority, subs only, VIP only, VIP priority, Mod priority, followers only</p>
-    </div>
-    <div class="feature-card">
-      <h3>Queue Popout:</h3>
-      <p>You can pop out the queue button for OBS windoow capture, can change scale</p>
-    </div>
+  <div class="fullscreen-overlay" id="fullscreenOverlay">
+    <img id="fullscreenImg" src="" alt="Fullscreen screenshot">
   </div>
-
-  <div class="trust">
-    <span><strong>Safe</strong> · Everything runs on your PC</span>
-    <span>Done in Python</span>
-    <span>1st prerelease released July 8, 2026</span>
-  </div>
-
-  <div class="footer">
-    <span>Made by <a href="https://github.com/MalikHw">MalikHw47</a></span>
-    <span><a href="https://github.com/HwGDReqs/HwGDReqs">Repository</a></span>
-    <span>GPL-V3 License</span>
-    <span><a href="privacy.html">Privacy Policy</a></span>
-    <a href="https://malikhw.github.io/donate" class="donate-btn" target="_blank">Donate</a>
-    <span><a href="api.html">API Docs</a></span>
-  </div>
-
-</div>
-
-<!-- Fullscreen image overlay (existing) -->
-<div class="fullscreen-overlay" id="fullscreenOverlay">
-  <img id="fullscreenImg" src="" alt="fullscreen">
-</div>
-
-<!-- NEW MODAL FOR ALTERNATIVE INSTALL METHODS -->
-<div class="modal-overlay" id="altInstallModal">
-  <div class="modal-content">
-    <h3>Other OS / alt install...</h3>
-    <p>if you're on Linux, you'd need a Python 3.11+ installation and <code>pip</code>! run <code>pip install hwgdreqs</code>, thats it, and to execute save <code>python -m hwgdreqs.main</code> somewhere</p>
-    <div class="modal-buttons">
-      <button class="modal-btn" id="closeModalBtn">close</button>
-      <button class="modal-btn primary" id="copyLinuxMacBtn">copy pip command</button>
-      <button class="modal-btn primary" id="copyPipBtn">copy launch command</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  (function() {
-    const overlay = document.getElementById('fullscreenOverlay');
-    const fullImg = document.getElementById('fullscreenImg');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-
-    function openFullscreen(src) {
-      fullImg.src = src;
-      overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
+  <style>
+    .fullscreen-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
     }
-
-    function closeFullscreen() {
-      overlay.classList.remove('active');
-      document.body.style.overflow = '';
+    .fullscreen-overlay.active { display: flex; }
+    .fullscreen-overlay img {
+      max-width: 90%; max-height: 90%; object-fit: contain;
+      cursor: default;
     }
+  </style>
 
-    galleryItems.forEach(item => {
-      const img = item.querySelector('img');
-      if (!img) return;
-      item.addEventListener('click', function(e) {
-        e.stopPropagation();
-        openFullscreen(img.src);
-      });
-    });
+  <script>
+    (function() {
+      const versionBadge = document.getElementById('versionBadge');
+      const downloadGrid = document.getElementById('downloadGrid');
+      const downloadCountSpan = document.getElementById('downloadCount');
 
-    overlay.addEventListener('click', function(e) {
-      if (e.target === overlay) {
-        closeFullscreen();
-      }
-    });
+      fetch('https://api.github.com/repos/hwgdreqs/hwgdreqs/releases')
+        .then(response => response.json())
+        .then(data => {
+          if (!Array.isArray(data)) return;
+          // sort by published date descending, take first as latest
+          const sorted = data.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+          const latest = sorted[0];
+          if (latest && latest.tag_name) {
+            versionBadge.textContent = latest.tag_name;
+            const links = downloadGrid.querySelectorAll('a');
+            links.forEach(link => {
+              const href = link.getAttribute('href');
+              if (href) {
+                const newHref = href.replace(/\/download\/[^/]+\//, `/download/${latest.tag_name}/`);
+                link.setAttribute('href', newHref);
+              }
+            });
+          }
 
-    fullImg.addEventListener('click', function(e) {
-      e.stopPropagation();
-      closeFullscreen();
-    });
+          // sum download_count across all assets in all releases
+          let total = 0;
+          data.forEach(release => {
+            if (release.assets && Array.isArray(release.assets)) {
+              release.assets.forEach(asset => {
+                if (asset.download_count) {
+                  total += asset.download_count;
+                }
+              });
+            }
+          });
+          if (downloadCountSpan) {
+            downloadCountSpan.textContent = total.toLocaleString();
+          }
+        })
+        .catch(error => console.error('Failed to fetch releases:', error));
+    })();
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        if (overlay.classList.contains('active')) {
-          closeFullscreen();
-        }
-        // Also close modal on Escape if open
-        const modal = document.getElementById('altInstallModal');
-        if (modal && modal.classList.contains('active')) {
-          modal.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-      }
-    });
-
-    const altTrigger = document.getElementById('altInstallTrigger');
-    const modal = document.getElementById('altInstallModal');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const copyLinuxMacBtn = document.getElementById('copyLinuxMacBtn');
-    const copyPipBtn = document.getElementById('copyPipBtn');
-
-    const linuxMacCommand = 'pip install hwgdreqs';
-    const pipCommand = 'python -m hwgdreqs.main';
-
-    function openModal() {
-      if (modal) {
-        modal.classList.add('active');
+    (function() {
+      const overlay = document.getElementById('fullscreenOverlay');
+      const fullImg = document.getElementById('fullscreenImg');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      
+      function openFullscreen(src) {
+        fullImg.src = src;
+        overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
       }
-    }
-
-    function closeModal() {
-      if (modal) {
-        modal.classList.remove('active');
+      
+      function closeFullscreen() {
+        overlay.classList.remove('active');
         document.body.style.overflow = '';
       }
-    }
-
-    if (altTrigger) {
-      altTrigger.addEventListener('click', function(e) {
-        e.preventDefault();
-        openModal();
+      
+      galleryItems.forEach(item => {
+        const img = item.querySelector('img');
+        if (!img) return;
+        item.addEventListener('click', function(e) {
+          e.stopPropagation();
+          openFullscreen(img.src);
+        });
       });
-    }
+      
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeFullscreen();
+      });
+      
+      fullImg.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeFullscreen();
+      });
+      
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) closeFullscreen();
+      });
+    })();
 
-    if (closeModalBtn) {
-      closeModalBtn.addEventListener('click', closeModal);
-    }
+    (function() {
+      console.log('Popup script loaded');
+      
+      const popup = document.getElementById('altPopup');
+      const openBtn = document.getElementById('altOsBtn');
+      const closeBtn = document.getElementById('closePopupBtn');
+      const copyBtn = document.getElementById('copyCmdBtn');
+      const cmdEl = document.getElementById('altCmd');
 
-    // Close modal when clicking on overlay background
-    if (modal) {
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          closeModal();
+      if (!popup) {
+        console.error('Popup element not found!');
+        return;
+      }
+      if (!openBtn) {
+        console.error('Open button not found!');
+        return;
+      }
+      if (!closeBtn) {
+        console.error('Close button not found!');
+        return;
+      }
+      if (!copyBtn) {
+        console.error('Copy button not found!');
+        return;
+      }
+      if (!cmdEl) {
+        console.error('Command element not found!');
+        return;
+      }
+
+      console.log('All popup elements found!');
+
+      function openPopup() { 
+        console.log('Opening popup');
+        popup.classList.add('active');
+        popup.style.display = 'flex';
+      }
+      
+      function closePopup() { 
+        console.log('Closing popup');
+        popup.classList.remove('active');
+        popup.style.display = 'none';
+      }
+
+      function copyTextFallback(text) {
+        const input = document.createElement('input');
+        input.value = text;
+        input.style.position = 'fixed';
+        input.style.opacity = '0';
+        input.style.left = '-9999px';
+        input.style.top = '-9999px';
+        document.body.appendChild(input);
+        
+        input.select();
+        input.setSelectionRange(0, 99999);
+        
+        try {
+          const success = document.execCommand('copy');
+          if (success) {
+            showCopiedFeedback();
+          } else {
+            alert('Failed to copy. Please copy manually: ' + text);
+          }
+        } catch (err) {
+          alert('Failed to copy. Please copy manually: ' + text);
+        }
+        
+        document.body.removeChild(input);
+      }
+
+      function showCopiedFeedback() {
+        const orig = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i class="nf nf-md-check"></i> Copied!';
+        copyBtn.style.background = '#4CAF50';
+        copyBtn.style.color = 'white';
+        setTimeout(() => { 
+          copyBtn.innerHTML = orig;
+          copyBtn.style.background = '';
+          copyBtn.style.color = '';
+        }, 2000);
+      }
+
+      openBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openPopup();
+      });
+
+      closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closePopup();
+      });
+
+      popup.addEventListener('click', function(e) {
+        if (e.target === popup) {
+          closePopup();
         }
       });
-    }
 
-    // Copy function helper
-    async function copyToClipboard(text) {
-      try {
-        await navigator.clipboard.writeText(text);
-        // Optional: tiny feedback could be added, but keeping minimal.
-        console.log('Copied: ' + text);
-      } catch (err) {
-        console.error('Failed to copy: ', err);
-        // Fallback for older browsers? Not needed for modern ones.
-      }
-    }
-
-    if (copyLinuxMacBtn) {
-      copyLinuxMacBtn.addEventListener('click', function() {
-        copyToClipboard(linuxMacCommand);
-        // Visual feedback: change button text briefly
-        const originalText = copyLinuxMacBtn.textContent;
-        copyLinuxMacBtn.textContent = 'copied!';
-        copyLinuxMacBtn.disabled = true;
-        setTimeout(() => {
-          copyLinuxMacBtn.textContent = originalText;
-          copyLinuxMacBtn.disabled = false;
-        }, 1500);
+      copyBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const text = cmdEl.textContent.trim();
+        
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            showCopiedFeedback();
+          }).catch(() => {
+            copyTextFallback(text);
+          });
+        } else {
+          copyTextFallback(text);
+        }
       });
-    }
 
-    if (copyPipBtn) {
-      copyPipBtn.addEventListener('click', function() {
-        copyToClipboard(pipCommand);
-        const originalText = copyPipBtn.textContent;
-        copyPipBtn.textContent = 'copied!';
-        copyPipBtn.disabled = true;
-        setTimeout(() => {
-          copyPipBtn.textContent = originalText;
-          copyPipBtn.disabled = false;
-        }, 1500);
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popup.classList.contains('active')) {
+          closePopup();
+        }
       });
-    }
 
-  })();
-</script>
-
+      popup.style.display = 'none';
+      console.log('Popup initialization complete');
+    })();
+  </script>
 </body>
 </html>
