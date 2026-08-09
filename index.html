@@ -4,13 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>HwGDReqs</title>
+  <meta property="og:title" content="HwGDReqs" />
+  <meta property="og:description" content="Geometry Dash level requests manager for Twitch & YouTube" />
+  <meta property="og:image" content="bg.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HwGDReqs" />
+  <meta name="twitter:description" content="Geometry Dash level requests manager for Twitch & YouTube" />
+  <meta name="twitter:image" content="bg.png" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
   <link rel="stylesheet" href="https://www.nerdfonts.com/assets/css/webfont.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="assets/logo.png" />
   <style>
-    /* --- reset & base --- */
     * {
       margin: 0;
       padding: 0;
@@ -26,7 +34,6 @@
       fill: currentColor;
     }
 
-    /* popups */
     .popup-overlay {
       display: none;
       position: fixed;
@@ -94,7 +101,6 @@
     }
     .popup-actions .close-btn:hover { background: #f0f0f0; }
 
-    /* tooltip */
     .tooltip-wrapper {
       position: relative;
       display: inline-flex;
@@ -150,7 +156,6 @@
       .tooltip-wrapper .tooltip-text::after { left: 20px; }
     }
 
-    /* body & layout */
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
       background-color: #ffffff;
@@ -537,7 +542,6 @@
 <body>
   <div class="hero-image" aria-hidden="true"></div>
 
-  <!-- popups -->
   <div class="popup-overlay" id="altPopup">
     <div class="popup-card">
       <p>There won't be packaging for linux🥀 BUT if you got pip/pipx you could do <code id="altCmd">pipx install hwgdreqs</code> and it gets installed</p>
@@ -562,7 +566,7 @@
   <div class="content">
     <h1>HwGDReqs</h1>
     <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem;">
-      <span class="version-badge" id="versionBadge">loading…</span>
+      <span class="version-badge" id="versionBadge">umm</span>
       <span class="download-count-badge" id="downloadCountBadge"><i class="nf nf-fa-download"></i> <span id="downloadCount">0</span> total downloads</span>
     </div>
     <div class="subtitle">
@@ -654,7 +658,6 @@
       const primaryRow = document.getElementById('primaryDownloadRow');
       const secondaryRow = document.getElementById('secondaryDownloadRow');
 
-      // --- OS detection ---
       function getOS() {
         const ua = navigator.userAgent || navigator.vendor || window.opera;
         if (/windows/i.test(ua)) return 'windows';
@@ -664,7 +667,6 @@
       }
       const userOS = getOS();
 
-      // --- button definitions ---
       const buttons = [
         { type: 'windows', label: 'Windows installer', icon: 'nf nf-fa-windows', href: 'https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-setup.exe', cls: 'btn', id: 'win-setup' },
         { type: 'windows', label: 'Online installer', icon: 'nf nf-fa-windows', href: 'https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-setup-online.exe', cls: 'btn btn-outline', subtitle: 'Recommended', id: 'win-online' },
@@ -714,10 +716,8 @@
       }
       renderButtons();
 
-      // --- fetch latest release + total downloads ---
       const base = 'https://api.github.com/repos/hwgdreqs/hwgdreqs';
 
-      // 1) get latest release via /latest
       fetch(base + '/releases/latest')
         .then(r => {
           if (!r.ok) throw new Error('latest release fetch failed');
@@ -726,7 +726,6 @@
         .then(latest => {
           if (latest && latest.tag_name) {
             versionBadge.textContent = latest.tag_name;
-            // update download links to use the latest tag
             const tag = latest.tag_name;
             document.querySelectorAll('#primaryDownloadRow a, #secondaryDownloadRow a').forEach(link => {
               const href = link.getAttribute('href');
@@ -739,7 +738,6 @@
         })
         .catch(err => {
           console.warn('Could not fetch latest release, falling back to releases list', err);
-          // fallback: fetch all releases and pick first
           fetch(base + '/releases')
             .then(r => r.json())
             .then(data => {
@@ -761,7 +759,6 @@
             .catch(e => console.error('fallback release fetch also failed', e));
         });
 
-      // 2) total downloads: fetch all releases and sum asset download counts
       fetch(base + '/releases')
         .then(r => r.json())
         .then(data => {
@@ -781,7 +778,6 @@
           if (downloadCountSpan) downloadCountSpan.textContent = '?';
         });
 
-      // --- MAC quarantine popup ---
       const macPopup = document.getElementById('macQuarantinePopup');
       const macCmd = document.getElementById('macQuarantineCmd');
       const copyMacBtn = document.getElementById('copyMacQuarantineBtn');
@@ -840,7 +836,6 @@
         if (e.key === 'Escape' && macPopup.classList.contains('active')) closeMacPopup();
       });
 
-      // --- Alternative OS popup ---
       const altPopup = document.getElementById('altPopup');
       const altOpenBtn = document.getElementById('alt-os');
       const altCloseBtn = document.getElementById('closePopupBtn');
@@ -891,7 +886,6 @@
         }
       });
 
-      // --- fullscreen gallery ---
       const overlay = document.getElementById('fullscreenOverlay');
       const fullImg = document.getElementById('fullscreenImg');
       document.querySelectorAll('.gallery-item').forEach(item => {
