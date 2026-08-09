@@ -25,7 +25,6 @@
       fill: currentColor;
     }
 
-    /* popup overlay */
     .popup-overlay {
       display: none;
       position: fixed;
@@ -93,7 +92,6 @@
     }
     .popup-actions .close-btn:hover { background: #f0f0f0; }
 
-    /* tooltip wrapper */
     .tooltip-wrapper {
       position: relative;
       display: inline-flex;
@@ -241,6 +239,15 @@
       gap: 0.9rem;
       margin: 1.2rem 0 2.2rem;
       padding: 1.5rem 1.8rem;
+      flex-direction: column;
+    }
+    .download-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      width: 100%;
     }
 
     .btn {
@@ -251,13 +258,17 @@
       font-weight: 600;
       font-size: 0.9rem;
       display: inline-flex;
+      flex-direction: column;
       align-items: center;
-      gap: 0.4rem;
-      transition: background 0.2s ease;
-      border: 1px solid transparent;
+      justify-content: center;
+      gap: 0.15rem;
+      transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      border: 2px solid transparent;
       letter-spacing: 0.01em;
       white-space: nowrap;
       cursor: pointer;
+      border-radius: 0px;
+      position: relative;
     }
     .btn i { font-size: 1.1rem; }
     .btn:hover { background: #003d99; }
@@ -277,6 +288,33 @@
       color: white;
     }
     .btn-alt:hover { background: #542f7a; }
+
+    .btn-highlight {
+      box-shadow: 0 0 0 3px rgba(0,85,204,0.4);
+      border-color: #0055cc;
+      background: #0055cc;
+      color: white;
+    }
+    .btn-outline.btn-highlight {
+      background: rgba(0,85,204,0.12);
+      border-color: #0055cc;
+      color: #0055cc;
+      box-shadow: 0 0 0 3px rgba(0,85,204,0.25);
+    }
+    .btn-alt.btn-highlight {
+      box-shadow: 0 0 0 3px rgba(108,59,158,0.5);
+      background: #6c3b9e;
+      border-color: #f0e6ff;
+    }
+
+    .btn-subtitle {
+      font-size: 0.7rem;
+      font-weight: 400;
+      opacity: 0.9;
+      line-height: 1.2;
+      margin-top: -0.1rem;
+      white-space: nowrap;
+    }
 
     h2, h4 {
       color: #003d99;
@@ -465,6 +503,14 @@
       .tooltip-wrapper .tooltip-text { background: #2c2c2c; color: #eee; }
       .tooltip-wrapper .tooltip-text::after { border-color: #2c2c2c transparent transparent transparent; }
       .download-count-badge { color: #8cb4ff; background: rgba(92,156,255,0.1); border-color: rgba(92,156,255,0.2); }
+      .btn-highlight {
+        box-shadow: 0 0 0 3px rgba(92,156,255,0.6);
+      }
+      .btn-outline.btn-highlight {
+        background: rgba(92,156,255,0.2);
+        color: #ffffff;
+        border-color: #8cb4ff;
+      }
     }
   </style>
 </head>
@@ -477,6 +523,17 @@
       <div class="popup-actions">
         <button class="copy-btn" id="copyCmdBtn"><i class="nf nf-md-content_copy"></i> Copy</button>
         <button class="close-btn" id="closePopupBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="macQuarantinePopup">
+    <div class="popup-card">
+      <p>🔐 Quarantine hates this application btw.<br>After you move it to your <strong>Applications</strong> folder, open Terminal and run:</p>
+      <code id="macQuarantineCmd">xattr -r com.apple.quarantine /Applications/HwGDReqs.app</code>
+      <div class="popup-actions">
+        <button class="copy-btn" id="copyMacQuarantineBtn"><i class="nf nf-md-content_copy"></i> Copy</button>
+        <button class="close-btn" id="closeMacPopupBtn">Ok</button>
       </div>
     </div>
   </div>
@@ -497,24 +554,8 @@
     </div>
 
     <div class="download-grid" id="downloadGrid">
-      <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-setup.exe" class="btn">
-        <i class="nf nf-fa-windows"></i> Windows installer
-      </a>
-      <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-setup-online.exe" class="btn btn-outline">
-        <i class="nf nf-fa-windows"></i> Online installer
-      </a>
-      <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-windows-portable.zip" class="btn btn-outline">
-        <i class="nf nf-fa-file_archive_o"></i> Windows Portable
-      </a>
-      <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-MacOS-intel.dmg" class="btn">
-        <i class="nf nf-fa-apple"></i> Mac Intel
-      </a>
-      <a href="https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-MacOS-silicon.dmg" class="btn">
-        <i class="nf nf-fa-apple"></i> Mac Silicon
-      </a>
-      <button class="btn btn-alt" id="altOsBtn">
-        <i class="nf nf-md-linux"></i> Alternative OS
-      </button>
+      <div class="download-row" id="primaryDownloadRow"></div>
+      <div class="download-row" id="secondaryDownloadRow"></div>
     </div>
 
     <h4><i class="nf nf-md-star"></i> Features</h4>
@@ -607,18 +648,91 @@
       const versionBadge = document.getElementById('versionBadge');
       const downloadGrid = document.getElementById('downloadGrid');
       const downloadCountSpan = document.getElementById('downloadCount');
+      const primaryRow = document.getElementById('primaryDownloadRow');
+      const secondaryRow = document.getElementById('secondaryDownloadRow');
+
+      function getOS() {
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        if (/windows/i.test(ua)) return 'windows';
+        if (/macintosh|mac os x/i.test(ua)) return 'macos';
+        if (/linux/i.test(ua) && !/android/i.test(ua)) return 'linux';
+        return 'other';
+      }
+
+      const userOS = getOS();
+
+      const buttons = [
+        { type: 'windows', label: 'Windows installer', icon: 'nf nf-fa-windows', href: 'https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-setup.exe', cls: 'btn', id: 'win-setup' },
+        { type: 'windows', label: 'Online installer', icon: 'nf nf-fa-windows', href: 'https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-setup-online.exe', cls: 'btn btn-outline', subtitle: 'Recommended', id: 'win-online' },
+        { type: 'windows', label: 'Windows Portable', icon: 'nf nf-fa-file_archive_o', href: 'https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-windows-portable.zip', cls: 'btn btn-outline', id: 'win-portable' },
+        { type: 'macos', label: 'Mac Intel', icon: 'nf nf-fa-apple', href: 'https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-MacOS-intel.dmg', cls: 'btn', id: 'mac-intel' },
+        { type: 'macos', label: 'Mac Silicon', icon: 'nf nf-fa-apple', href: 'https://github.com/HwGDReqs/HwGDReqs/releases/download/0.24.0/HwGDReqs-MacOS-silicon.dmg', cls: 'btn', id: 'mac-silicon' },
+        { type: 'other', label: 'Alternative OS', icon: 'nf nf-md-linux', cls: 'btn btn-alt', id: 'alt-os', isButton: true }
+      ];
+
+      function createButtonElement(btn, isHighlighted) {
+        let element;
+        if (btn.isButton) {
+          element = document.createElement('button');
+          element.className = btn.cls;
+          if (isHighlighted) element.classList.add('btn-highlight');
+          element.id = btn.id;
+        } else {
+          element = document.createElement('a');
+          element.href = btn.href;
+          element.className = btn.cls;
+          if (isHighlighted) element.classList.add('btn-highlight');
+          element.target = '_blank';
+          element.rel = 'noopener noreferrer';
+        }
+
+        element.innerHTML = `<i class="${btn.icon}"></i> ${btn.label}`;
+        if (btn.subtitle) {
+          element.innerHTML += `<span class="btn-subtitle">${btn.subtitle}</span>`;
+        }
+        return element;
+      }
+
+      function renderButtons() {
+        primaryRow.innerHTML = '';
+        secondaryRow.innerHTML = '';
+
+        const primaryButtons = [];
+        const secondaryButtons = [];
+
+        buttons.forEach(btn => {
+          const isMatch = (btn.type === userOS) || (userOS === 'linux' && btn.type === 'other') || (userOS === 'other' && btn.type === 'other');
+          if (isMatch) {
+            primaryButtons.push(btn);
+          } else {
+            secondaryButtons.push(btn);
+          }
+        });
+
+        if (primaryButtons.length === 0) {
+          primaryButtons.push(...secondaryButtons.splice(0, secondaryButtons.length));
+        }
+
+        primaryButtons.forEach(btn => {
+          primaryRow.appendChild(createButtonElement(btn, true));
+        });
+
+        secondaryButtons.forEach(btn => {
+          secondaryRow.appendChild(createButtonElement(btn, false));
+        });
+      }
+
+      renderButtons();
 
       fetch('https://api.github.com/repos/hwgdreqs/hwgdreqs/releases')
         .then(response => response.json())
         .then(data => {
           if (!Array.isArray(data)) return;
-          // sort by published date descending, take first as latest
           const sorted = data.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
           const latest = sorted[0];
           if (latest && latest.tag_name) {
             versionBadge.textContent = latest.tag_name;
-            const links = downloadGrid.querySelectorAll('a');
-            links.forEach(link => {
+            document.querySelectorAll('#primaryDownloadRow a, #secondaryDownloadRow a').forEach(link => {
               const href = link.getAttribute('href');
               if (href) {
                 const newHref = href.replace(/\/download\/[^/]+\//, `/download/${latest.tag_name}/`);
@@ -627,187 +741,148 @@
             });
           }
 
-          // sum download_count across all assets in all releases
           let total = 0;
           data.forEach(release => {
             if (release.assets && Array.isArray(release.assets)) {
               release.assets.forEach(asset => {
-                if (asset.download_count) {
-                  total += asset.download_count;
-                }
+                if (asset.download_count) total += asset.download_count;
               });
             }
           });
-          if (downloadCountSpan) {
-            downloadCountSpan.textContent = total.toLocaleString();
-          }
+          if (downloadCountSpan) downloadCountSpan.textContent = total.toLocaleString();
         })
         .catch(error => console.error('Failed to fetch releases:', error));
-    })();
 
-    (function() {
+      const macPopup = document.getElementById('macQuarantinePopup');
+      const macCmd = document.getElementById('macQuarantineCmd');
+      const copyMacBtn = document.getElementById('copyMacQuarantineBtn');
+      const closeMacBtn = document.getElementById('closeMacPopupBtn');
+
+      function openMacPopup(appPath = '/Applications/HwGDReqs.app') {
+        macCmd.textContent = `xattr -r com.apple.quarantine ${appPath}`;
+        macPopup.classList.add('active');
+        macPopup.style.display = 'flex';
+      }
+
+      function closeMacPopup() {
+        macPopup.classList.remove('active');
+        macPopup.style.display = 'none';
+      }
+
+      document.addEventListener('click', function(e) {
+        const target = e.target.closest('a');
+        if (!target) return;
+        const href = target.getAttribute('href') || '';
+        if (href.includes('MacOS')) {
+          e.preventDefault();
+          let appPath = '/Applications/HwGDReqs.app';
+          if (href.includes('intel')) appPath = '/Applications/HwGDReqs.app';
+          else if (href.includes('silicon')) appPath = '/Applications/HwGDReqs.app';
+          openMacPopup(appPath);
+          window.open(href, '_blank');
+        }
+      });
+
+      copyMacBtn.addEventListener('click', function() {
+        const text = macCmd.textContent;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            copyMacBtn.innerHTML = '<i class="nf nf-md-check"></i> Copied!';
+            setTimeout(() => { copyMacBtn.innerHTML = '<i class="nf nf-md-content_copy"></i> Copy'; }, 2000);
+          }).catch(() => fallbackCopy(text));
+        } else {
+          fallbackCopy(text);
+        }
+      });
+
+      function fallbackCopy(text) {
+        const input = document.createElement('input');
+        input.value = text;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        copyMacBtn.innerHTML = '<i class="nf nf-md-check"></i> Copied!';
+        setTimeout(() => { copyMacBtn.innerHTML = '<i class="nf nf-md-content_copy"></i> Copy'; }, 2000);
+      }
+
+      closeMacBtn.addEventListener('click', closeMacPopup);
+      macPopup.addEventListener('click', function(e) { if (e.target === macPopup) closeMacPopup(); });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && macPopup.classList.contains('active')) closeMacPopup();
+      });
+
+      const altPopup = document.getElementById('altPopup');
+      const altOpenBtn = document.getElementById('alt-os');
+      const altCloseBtn = document.getElementById('closePopupBtn');
+      const altCopyBtn = document.getElementById('copyCmdBtn');
+      const altCmdEl = document.getElementById('altCmd');
+
+      if (altOpenBtn) {
+        altOpenBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          altPopup.classList.add('active');
+          altPopup.style.display = 'flex';
+        });
+      }
+
+      if (altCloseBtn) {
+        altCloseBtn.addEventListener('click', function() {
+          altPopup.classList.remove('active');
+          altPopup.style.display = 'none';
+        });
+      }
+
+      altPopup.addEventListener('click', function(e) { if (e.target === altPopup) { altPopup.classList.remove('active'); altPopup.style.display = 'none'; } });
+
+      if (altCopyBtn && altCmdEl) {
+        altCopyBtn.addEventListener('click', function() {
+          const text = altCmdEl.textContent.trim();
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+              altCopyBtn.innerHTML = '<i class="nf nf-md-check"></i> Copied!';
+              setTimeout(() => { altCopyBtn.innerHTML = '<i class="nf nf-md-content_copy"></i> Copy'; }, 2000);
+            }).catch(() => fallbackCopyAlt(text));
+          } else {
+            fallbackCopyAlt(text);
+          }
+        });
+      }
+
+      function fallbackCopyAlt(text) {
+        const input = document.createElement('input');
+        input.value = text;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        altCopyBtn.innerHTML = '<i class="nf nf-md-check"></i> Copied!';
+        setTimeout(() => { altCopyBtn.innerHTML = '<i class="nf nf-md-content_copy"></i> Copy'; }, 2000);
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && altPopup.classList.contains('active')) {
+          altPopup.classList.remove('active');
+          altPopup.style.display = 'none';
+        }
+      });
+
       const overlay = document.getElementById('fullscreenOverlay');
       const fullImg = document.getElementById('fullscreenImg');
-      const galleryItems = document.querySelectorAll('.gallery-item');
-      
-      function openFullscreen(src) {
-        fullImg.src = src;
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-      
-      function closeFullscreen() {
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-      
-      galleryItems.forEach(item => {
+      document.querySelectorAll('.gallery-item').forEach(item => {
         const img = item.querySelector('img');
         if (!img) return;
         item.addEventListener('click', function(e) {
           e.stopPropagation();
-          openFullscreen(img.src);
+          fullImg.src = img.src;
+          overlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
         });
       });
-      
-      overlay.addEventListener('click', function(e) {
-        if (e.target === overlay) closeFullscreen();
-      });
-      
-      fullImg.addEventListener('click', function(e) {
-        e.stopPropagation();
-        closeFullscreen();
-      });
-      
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && overlay.classList.contains('active')) closeFullscreen();
-      });
-    })();
-
-    (function() {
-      console.log('Popup script loaded');
-      
-      const popup = document.getElementById('altPopup');
-      const openBtn = document.getElementById('altOsBtn');
-      const closeBtn = document.getElementById('closePopupBtn');
-      const copyBtn = document.getElementById('copyCmdBtn');
-      const cmdEl = document.getElementById('altCmd');
-
-      if (!popup) {
-        console.error('Popup element not found!');
-        return;
-      }
-      if (!openBtn) {
-        console.error('Open button not found!');
-        return;
-      }
-      if (!closeBtn) {
-        console.error('Close button not found!');
-        return;
-      }
-      if (!copyBtn) {
-        console.error('Copy button not found!');
-        return;
-      }
-      if (!cmdEl) {
-        console.error('Command element not found!');
-        return;
-      }
-
-      console.log('All popup elements found!');
-
-      function openPopup() { 
-        console.log('Opening popup');
-        popup.classList.add('active');
-        popup.style.display = 'flex';
-      }
-      
-      function closePopup() { 
-        console.log('Closing popup');
-        popup.classList.remove('active');
-        popup.style.display = 'none';
-      }
-
-      function copyTextFallback(text) {
-        const input = document.createElement('input');
-        input.value = text;
-        input.style.position = 'fixed';
-        input.style.opacity = '0';
-        input.style.left = '-9999px';
-        input.style.top = '-9999px';
-        document.body.appendChild(input);
-        
-        input.select();
-        input.setSelectionRange(0, 99999);
-        
-        try {
-          const success = document.execCommand('copy');
-          if (success) {
-            showCopiedFeedback();
-          } else {
-            alert('Failed to copy. Please copy manually: ' + text);
-          }
-        } catch (err) {
-          alert('Failed to copy. Please copy manually: ' + text);
-        }
-        
-        document.body.removeChild(input);
-      }
-
-      function showCopiedFeedback() {
-        const orig = copyBtn.innerHTML;
-        copyBtn.innerHTML = '<i class="nf nf-md-check"></i> Copied!';
-        copyBtn.style.background = '#4CAF50';
-        copyBtn.style.color = 'white';
-        setTimeout(() => { 
-          copyBtn.innerHTML = orig;
-          copyBtn.style.background = '';
-          copyBtn.style.color = '';
-        }, 2000);
-      }
-
-      openBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        openPopup();
-      });
-
-      closeBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        closePopup();
-      });
-
-      popup.addEventListener('click', function(e) {
-        if (e.target === popup) {
-          closePopup();
-        }
-      });
-
-      copyBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const text = cmdEl.textContent.trim();
-        
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(() => {
-            showCopiedFeedback();
-          }).catch(() => {
-            copyTextFallback(text);
-          });
-        } else {
-          copyTextFallback(text);
-        }
-      });
-
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && popup.classList.contains('active')) {
-          closePopup();
-        }
-      });
-
-      popup.style.display = 'none';
-      console.log('Popup initialization complete');
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; } });
+      fullImg.addEventListener('click', function(e) { e.stopPropagation(); overlay.classList.remove('active'); document.body.style.overflow = ''; });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && overlay.classList.contains('active')) { overlay.classList.remove('active'); document.body.style.overflow = ''; } });
     })();
   </script>
 </body>
