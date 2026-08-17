@@ -476,6 +476,94 @@
       cursor: default;
     }
 
+    /* ----- comparison table ----- */
+    .comparison-section {
+      width: 100%;
+      max-width: 950px;
+      margin: 2rem 0 1rem;
+      overflow-x: auto;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background: transparent;
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.6rem 0.5rem;
+      border: 1px solid rgba(0,85,204,0.15);
+      text-align: left;
+      vertical-align: middle;
+      background: transparent;
+    }
+    .comparison-table th {
+      background: rgba(0,85,204,0.04);
+      font-weight: 600;
+      color: #003d99;
+      border-bottom: 2px solid rgba(0,85,204,0.2);
+    }
+    .comparison-table .highlight-row td {
+      background: rgba(0,85,204,0.06);
+      border-color: rgba(0,85,204,0.3);
+      font-weight: 500;
+    }
+    .comparison-table .highlight-row td:first-child {
+      background: rgba(0,85,204,0.10);
+      font-weight: 600;
+      color: #0055cc;
+    }
+    .comparison-table .yes { color: #0a7a3a; font-weight: 600; }
+    .comparison-table .no { color: #b00030; font-weight: 600; }
+    .comparison-table .tool-name {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .comparison-table .tool-name.hw {
+      color: #0055cc;
+    }
+    .comparison-table .subnote {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: #555;
+      display: block;
+      line-height: 1.3;
+    }
+    @media (max-width: 700px) {
+      .comparison-table {
+        font-size: 0.7rem;
+      }
+      .comparison-table th,
+      .comparison-table td {
+        padding: 0.4rem 0.3rem;
+      }
+      .comparison-table .subnote {
+        font-size: 0.6rem;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      .comparison-table th {
+        color: #8cb4ff;
+        background: rgba(92,156,255,0.08);
+        border-color: rgba(92,156,255,0.2);
+      }
+      .comparison-table td {
+        border-color: rgba(92,156,255,0.15);
+      }
+      .comparison-table .highlight-row td {
+        background: rgba(92,156,255,0.08);
+        border-color: rgba(92,156,255,0.25);
+      }
+      .comparison-table .highlight-row td:first-child {
+        background: rgba(92,156,255,0.15);
+        color: #8cb4ff;
+      }
+      .comparison-table .yes { color: #5cdb8a; }
+      .comparison-table .no { color: #ff6b8a; }
+      .comparison-table .subnote { color: #aaa; }
+      .comparison-table .tool-name.hw { color: #8cb4ff; }
+    }
+
     @media (max-width: 768px) {
       .hero-image { height: 350px; }
       .content { margin-top: 180px; padding: 1.5rem 1rem; }
@@ -622,6 +710,110 @@
       <div class="gallery-item"><img src="assets/5.png" alt="Screenshot 5" loading="lazy"></div>
       <div class="gallery-item"><img src="assets/6.png" alt="Screenshot 6" loading="lazy"></div>
     </div>
+
+    <!-- comparison section -->
+    <div class="comparison-section">
+      <h4 style="margin-bottom: 0.5rem;"><i class="nf nf-md-compare"></i> Comparison With Other Tools</h4>
+      <div style="overflow-x: auto; width: 100%;">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>HwGDReqs</th>
+              <th>Formula(req.gd)</th>
+              <th>Google Forms (itzkiba)</th>
+              <th>Gdrequests (The Toast Man)</th>
+              <th>LoquiBot</th>
+              <th>gdreqbot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight-row">
+              <td class="tool-name hw">Twitch support</td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="no">✗</span></td>
+              <td><span class="no">✗</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="yes">✓</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="tool-name hw">YouTube Support</td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="no">✗</span></td>
+              <td><span class="no">✗</span></td>
+              <td><span class="yes">✓</span><span class="subnote">(most of time doesn't work)</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="no">✗</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="tool-name hw">Twitch Commands</td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="no">✗</span></td>
+              <td><span class="no">✗</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="yes">✓</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="tool-name hw">YouTube commands</td>
+              <td><span class="yes">✓</span><span class="subnote">(no replies)</span></td>
+              <td><span class="no">✗</span></td>
+              <td><span class="no">✗</span></td>
+              <td><span class="yes">✓</span><span class="subnote">(no replies)</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="no">✗</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="tool-name hw">Forms based</td>
+              <td><span class="yes">✓</span><span class="subnote">(Can be done manually)</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="no">✗</span></td>
+              <td><span class="no">✗</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="tool-name hw"><strong>Geode Integration</strong></td>
+              <td><span class="yes">✓</span><span class="subnote">(not on index, installed from the app)</span></td>
+              <td><span class="yes">✓</span><span class="subnote">(on index)</span></td>
+              <td><span class="yes">✓</span><span class="subnote">(on index)</span></td>
+              <td><span class="yes">✓</span><span class="subnote">(vibe-coded, Not on index)</span></td>
+              <td><span class="no">✗</span><span class="subnote">(used to be)</span></td>
+              <td><span class="no">✗</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="tool-name hw"><strong>ACTUALLY WORKS</strong></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="no">✗</span><span class="subnote">(Dead)</span></td>
+              <td><span class="yes">✓</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="tool-name hw">Ease of Setup and use</td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="no">✗</span><span class="subnote">(manually make an API key from req.gd on mod settings)</span></td>
+              <td><span class="no">✗</span></td>
+              <td><span class="no">✗</span><span class="subnote">(manually pasting a Token code on mod settings)</span></td>
+              <td><span class="yes">✓</span></td>
+              <td><span class="yes">✓</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="tool-name hw">Type</td>
+              <td>External Desktop app + gd mod</td>
+              <td>Website + gd mod</td>
+              <td>Google Sheets + forms + gd mod</td>
+              <td>External website + gd mod</td>
+              <td>External desktop app(Java 💀) + gd mod</td>
+              <td>External desktop app(Electron 😭)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- end comparison -->
 
     <h4><i class="nf nf-fa-dollar"></i> Thanks to early users</h4>
     <div class="thanks-list">
