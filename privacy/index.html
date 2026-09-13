@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -75,11 +76,11 @@
       font-size: 0.95rem;
       font-weight: 500;
       color: #0055cc;
-      background: rgba(0,85,204,0.08);
+      background: rgba(0, 85, 204, 0.08);
       padding: 0.25rem 0.9rem;
       margin-bottom: 0.5rem;
       display: inline-block;
-      border: 1px solid rgba(0,85,204,0.2);
+      border: 1px solid rgba(0, 85, 204, 0.2);
     }
 
     .privacy-content {
@@ -88,8 +89,8 @@
       text-align: left;
       padding: 1.5rem 2rem;
       margin: 0.5rem 0 1.5rem;
-      border: 1px solid rgba(0,85,204,0.1);
-      background: rgba(0,85,204,0.02);
+      border: 1px solid rgba(0, 85, 204, 0.1);
+      background: rgba(0, 85, 204, 0.02);
     }
 
     .privacy-content h2 {
@@ -124,7 +125,7 @@
       padding: 0.5rem 0.8rem;
       font-size: 1rem;
       line-height: 1.6;
-      border-bottom: 1px solid rgba(0,85,204,0.05);
+      border-bottom: 1px solid rgba(0, 85, 204, 0.05);
     }
 
     .privacy-content li:last-child {
@@ -137,7 +138,7 @@
     }
 
     .privacy-content code {
-      background: rgba(0,85,204,0.08);
+      background: rgba(0, 85, 204, 0.08);
       padding: 0.1rem 0.5rem;
       border-radius: 4px;
       font-family: monospace;
@@ -146,7 +147,7 @@
     }
 
     .highlight-box {
-      background: rgba(0,85,204,0.06);
+      background: rgba(0, 85, 204, 0.06);
       border-left: 4px solid #0055cc;
       padding: 1.2rem 1.5rem;
       margin: 1.2rem 0;
@@ -185,8 +186,14 @@
       cursor: pointer;
       margin-top: 0.5rem;
     }
-    .btn i { font-size: 1.1rem; }
-    .btn:hover { background: #003d99; }
+
+    .btn i {
+      font-size: 1.1rem;
+    }
+
+    .btn:hover {
+      background: #003d99;
+    }
 
     .footer {
       margin-top: 2.5rem;
@@ -200,6 +207,7 @@
       color: #1e1e1e;
       width: 100%;
     }
+
     .footer a {
       color: #0055cc;
       text-decoration: none;
@@ -209,8 +217,15 @@
       gap: 0.3rem;
       transition: color 0.2s ease;
     }
-    .footer a:hover { color: #003d99; text-decoration: underline; }
-    .footer i { font-size: 1.2rem; }
+
+    .footer a:hover {
+      color: #003d99;
+      text-decoration: underline;
+    }
+
+    .footer i {
+      font-size: 1.2rem;
+    }
 
     .made-by {
       margin-top: 1rem;
@@ -222,6 +237,7 @@
       justify-content: center;
       gap: 0.5rem;
     }
+
     .made-by a {
       color: #0055cc;
       font-weight: 700;
@@ -230,9 +246,11 @@
       align-items: center;
       gap: 0.3rem;
     }
+
     .made-by a:hover {
       text-decoration: underline;
     }
+
     .made-by img {
       width: 24px;
       height: 24px;
@@ -242,47 +260,154 @@
     }
 
     @media (max-width: 768px) {
-      .hero-image { height: 350px; }
-      .content { margin-top: 180px; padding: 1.5rem 1rem; }
-      h1 { font-size: 2.2rem; }
-      .privacy-content { padding: 1rem; }
-      .privacy-content h2 { font-size: 1.1rem; }
-      .footer { gap: 1rem; font-size: 0.85rem; padding: 0.8rem 1rem; flex-direction: column; }
+      .hero-image {
+        height: 350px;
+      }
+
+      .content {
+        margin-top: 180px;
+        padding: 1.5rem 1rem;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .privacy-content {
+        padding: 1rem;
+      }
+
+      .privacy-content h2 {
+        font-size: 1.1rem;
+      }
+
+      .footer {
+        gap: 1rem;
+        font-size: 0.85rem;
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+      }
     }
 
     @media (max-width: 480px) {
-      .content { margin-top: 150px; padding: 1rem 0.5rem; }
-      h1 { font-size: 1.8rem; }
-      .privacy-content { padding: 0.8rem; }
-      .privacy-content li { font-size: 0.9rem; padding: 0.4rem 0.5rem; }
-      .highlight-box { padding: 0.8rem 1rem; }
+      .content {
+        margin-top: 150px;
+        padding: 1rem 0.5rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .privacy-content {
+        padding: 0.8rem;
+      }
+
+      .privacy-content li {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.5rem;
+      }
+
+      .highlight-box {
+        padding: 0.8rem 1rem;
+      }
     }
 
     @media (prefers-color-scheme: dark) {
-      body { background-color: #1a1a1a; color: #e6e6e6; }
-      .hero-image { opacity: 0.7; }
-      h1 { color: #5c9cff; }
-      .version-badge { color: #5c9cff; background: rgba(92,156,255,0.15); border-color: rgba(92,156,255,0.3); }
-      .privacy-content { border-color: rgba(92,156,255,0.2); background: rgba(92,156,255,0.05); }
-      .privacy-content h2 { color: #8cb4ff; }
-      .privacy-content p { color: #ccc; }
-      .privacy-content li { border-color: rgba(92,156,255,0.1); }
-      .privacy-content li strong { color: #8cb4ff; }
-      .privacy-content code { background: rgba(92,156,255,0.15); color: #c2d9ff; }
-      .privacy-content a { color: #8cb4ff; }
-      .privacy-content a:hover { color: #a0c4ff; }
-      .highlight-box { background: rgba(92,156,255,0.1); border-left-color: #5c9cff; }
-      .highlight-box strong { color: #8cb4ff; }
-      .btn { background: #1f6feb; color: white; }
-      .btn:hover { background: #1a5fcc; }
-      .footer a { color: #8cb4ff; }
-      .footer a:hover { color: #a0c4ff; }
-      .made-by { color: #ddd; }
-      .made-by a { color: #8cb4ff; }
-      .made-by a:hover { color: #a0c4ff; }
+      body {
+        background-color: #1a1a1a;
+        color: #e6e6e6;
+      }
+
+      .hero-image {
+        opacity: 0.7;
+      }
+
+      h1 {
+        color: #5c9cff;
+      }
+
+      .version-badge {
+        color: #5c9cff;
+        background: rgba(92, 156, 255, 0.15);
+        border-color: rgba(92, 156, 255, 0.3);
+      }
+
+      .privacy-content {
+        border-color: rgba(92, 156, 255, 0.2);
+        background: rgba(92, 156, 255, 0.05);
+      }
+
+      .privacy-content h2 {
+        color: #8cb4ff;
+      }
+
+      .privacy-content p {
+        color: #ccc;
+      }
+
+      .privacy-content li {
+        border-color: rgba(92, 156, 255, 0.1);
+      }
+
+      .privacy-content li strong {
+        color: #8cb4ff;
+      }
+
+      .privacy-content code {
+        background: rgba(92, 156, 255, 0.15);
+        color: #c2d9ff;
+      }
+
+      .privacy-content a {
+        color: #8cb4ff;
+      }
+
+      .privacy-content a:hover {
+        color: #a0c4ff;
+      }
+
+      .highlight-box {
+        background: rgba(92, 156, 255, 0.1);
+        border-left-color: #5c9cff;
+      }
+
+      .highlight-box strong {
+        color: #8cb4ff;
+      }
+
+      .btn {
+        background: #1f6feb;
+        color: white;
+      }
+
+      .btn:hover {
+        background: #1a5fcc;
+      }
+
+      .footer a {
+        color: #8cb4ff;
+      }
+
+      .footer a:hover {
+        color: #a0c4ff;
+      }
+
+      .made-by {
+        color: #ddd;
+      }
+
+      .made-by a {
+        color: #8cb4ff;
+      }
+
+      .made-by a:hover {
+        color: #a0c4ff;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="hero-image" aria-hidden="true"></div>
 
@@ -390,16 +515,18 @@
     </div>
 
     <div class="made-by">
-      Made by <a href="https://discord.com/users/1131020856827580508" target="_blank"><img src="../assets/MalikHw47.png" alt="MalikHw47"> MalikHw47</a>
+      Made by <a href="https://discord.com/users/1131020856827580508" target="_blank"><img src="../assets/MalikHw47.png"
+          alt="MalikHw47"> MalikHw47</a>
     </div>
 
     <div class="footer">
       <a href="https://github.com/HwGDReqs" target="_blank"><i class="nf nf-md-github"></i> GitHub</a>
-      <a href="https://discord.com/users/1131020856827580508" target="_blank"><i class="nf nf-md-discord"></i> Discord</a>
+      <a href="https://discord.gg/6AGZFRgTwc" target="_blank"><i class="nf nf-md-discord"></i> Discord Server</a>
       <a href="https://www.youtube.com/@MalikHw47" target="_blank"><i class="nf nf-md-youtube"></i> YouTube</a>
       <a href="https://www.twitch.tv/malikhw47" target="_blank"><i class="nf nf-md-twitch"></i> Twitch</a>
       <a href="https://malikhw.github.io/donate" target="_blank"><i class="nf nf-fa-dollar"></i> Donate</a>
     </div>
   </div>
 </body>
+
 </html>

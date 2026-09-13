@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -17,7 +18,8 @@
   <link rel="stylesheet" href="https://www.nerdfonts.com/assets/css/webfont.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -37,13 +39,20 @@
     .popup-overlay {
       display: none;
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
       z-index: 2000;
       justify-content: center;
       align-items: center;
     }
-    .popup-overlay.active { display: flex; }
+
+    .popup-overlay.active {
+      display: flex;
+    }
+
     .popup-card {
       background: #fff;
       color: #1a1a1a;
@@ -51,15 +60,17 @@
       width: 90%;
       padding: 2rem 1.8rem;
       border-radius: 0px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       position: relative;
       text-align: left;
     }
+
     .popup-card p {
       font-size: 1rem;
       line-height: 1.6;
       margin: 0.5rem 0 1.5rem;
     }
+
     .popup-card code {
       background: #f0f4ff;
       padding: 0.2rem 0.6rem;
@@ -69,6 +80,7 @@
       display: inline-block;
       word-break: break-all;
     }
+
     .popup-actions {
       display: flex;
       flex-wrap: wrap;
@@ -77,6 +89,7 @@
       justify-content: flex-end;
       margin-top: 0.5rem;
     }
+
     .popup-actions button {
       background: #0055cc;
       color: white;
@@ -88,18 +101,29 @@
       font-size: 0.9rem;
       transition: background 0.2s;
     }
-    .popup-actions button:hover { background: #003d99; }
+
+    .popup-actions button:hover {
+      background: #003d99;
+    }
+
     .popup-actions .copy-btn {
       background: #e6eef9;
       color: #0055cc;
     }
-    .popup-actions .copy-btn:hover { background: #d0dff5; }
+
+    .popup-actions .copy-btn:hover {
+      background: #d0dff5;
+    }
+
     .popup-actions .close-btn {
       background: transparent;
       color: #555;
       border: 1px solid #ccc;
     }
-    .popup-actions .close-btn:hover { background: #f0f0f0; }
+
+    .popup-actions .close-btn:hover {
+      background: #f0f0f0;
+    }
 
     .tooltip-wrapper {
       position: relative;
@@ -108,6 +132,7 @@
       gap: 0.5rem;
       cursor: help;
     }
+
     .tooltip-wrapper .tooltip-text {
       visibility: hidden;
       opacity: 0;
@@ -126,11 +151,12 @@
       left: 50%;
       transform: translateX(-50%);
       transition: opacity 0.2s, visibility 0.2s;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
       white-space: normal;
       word-break: break-word;
       pointer-events: none;
     }
+
     .tooltip-wrapper .tooltip-text::after {
       content: "";
       position: absolute;
@@ -141,10 +167,12 @@
       border-style: solid;
       border-color: #1a1a1a transparent transparent transparent;
     }
+
     .tooltip-wrapper:hover .tooltip-text {
       visibility: visible;
       opacity: 1;
     }
+
     @media (max-width: 600px) {
       .tooltip-wrapper .tooltip-text {
         width: 260px;
@@ -153,7 +181,10 @@
         transform: translateX(0);
         bottom: 130%;
       }
-      .tooltip-wrapper .tooltip-text::after { left: 20px; }
+
+      .tooltip-wrapper .tooltip-text::after {
+        left: 20px;
+      }
     }
 
     body {
@@ -215,11 +246,11 @@
       font-size: 0.95rem;
       font-weight: 500;
       color: #0055cc;
-      background: rgba(0,85,204,0.08);
+      background: rgba(0, 85, 204, 0.08);
       padding: 0.25rem 0.9rem;
       margin-bottom: 0.5rem;
       display: inline-block;
-      border: 1px solid rgba(0,85,204,0.2);
+      border: 1px solid rgba(0, 85, 204, 0.2);
     }
 
     .subtitle {
@@ -250,6 +281,7 @@
       padding: 1.5rem 1.8rem;
       flex-direction: column;
     }
+
     .download-row {
       display: flex;
       flex-wrap: wrap;
@@ -279,39 +311,53 @@
       border-radius: 0px;
       position: relative;
     }
-    .btn i { font-size: 1.1rem; }
-    .btn:hover { background: #003d99; }
+
+    .btn i {
+      font-size: 1.1rem;
+    }
+
+    .btn:hover {
+      background: #003d99;
+    }
+
     .btn-outline {
       background: transparent;
       color: #0055cc;
       border: 2px solid #0055cc;
     }
+
     .btn-outline:hover {
-      background: rgba(0,85,204,0.08);
+      background: rgba(0, 85, 204, 0.08);
       color: #003d99;
       border-color: #003d99;
     }
+
     .btn-alt {
       background: #6c3b9e;
       border-color: #6c3b9e;
       color: white;
     }
-    .btn-alt:hover { background: #542f7a; }
+
+    .btn-alt:hover {
+      background: #542f7a;
+    }
 
     .btn-highlight {
-      box-shadow: 0 0 0 3px rgba(0,85,204,0.4);
+      box-shadow: 0 0 0 3px rgba(0, 85, 204, 0.4);
       border-color: #0055cc;
       background: #0055cc;
       color: white;
     }
+
     .btn-outline.btn-highlight {
-      background: rgba(0,85,204,0.12);
+      background: rgba(0, 85, 204, 0.12);
       border-color: #0055cc;
       color: #0055cc;
-      box-shadow: 0 0 0 3px rgba(0,85,204,0.25);
+      box-shadow: 0 0 0 3px rgba(0, 85, 204, 0.25);
     }
+
     .btn-alt.btn-highlight {
-      box-shadow: 0 0 0 3px rgba(108,59,158,0.5);
+      box-shadow: 0 0 0 3px rgba(108, 59, 158, 0.5);
       background: #6c3b9e;
       border-color: #f0e6ff;
     }
@@ -325,15 +371,27 @@
       white-space: nowrap;
     }
 
-    h2, h4 {
+    h2,
+    h4 {
       color: #003d99;
       margin-top: 1.8rem;
       margin-bottom: 0.8rem;
       font-weight: 600;
       letter-spacing: -0.2px;
     }
-    h2 { font-size: 1.8rem; margin-bottom: 0.2rem; }
-    h4 { font-size: 1.5rem; margin-top: 2.2rem; display: flex; align-items: center; gap: 0.5rem; }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.2rem;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      margin-top: 2.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
     ul {
       list-style: none;
@@ -345,20 +403,26 @@
       flex-direction: column;
       gap: 0.6rem;
     }
+
     li {
       display: flex;
       align-items: flex-start;
       gap: 0.7rem;
       font-size: 1.05rem;
       padding: 0.7rem 1.2rem;
-      border: 1px solid rgba(0,85,204,0.1);
+      border: 1px solid rgba(0, 85, 204, 0.1);
     }
-    li i, li .geode-icon {
+
+    li i,
+    li .geode-icon {
       color: #0055cc;
       margin-top: 0.1rem;
       flex-shrink: 0;
     }
-    li i { font-size: 1.2rem; }
+
+    li i {
+      font-size: 1.2rem;
+    }
 
     .screenshots {
       display: flex;
@@ -367,11 +431,16 @@
       gap: 1rem;
       margin: 1.8rem 0 2rem;
     }
-    .gallery-item { cursor: pointer; display: inline-block; }
+
+    .gallery-item {
+      cursor: pointer;
+      display: inline-block;
+    }
+
     .gallery-item img {
       width: 130px;
       height: auto;
-      border: 1px solid rgba(0,85,204,0.25);
+      border: 1px solid rgba(0, 85, 204, 0.25);
       background: #f0f4ff;
       display: block;
     }
@@ -385,14 +454,16 @@
       margin: 0.8rem 0 1.2rem;
       font-weight: 500;
     }
+
     .thanks-user {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(0,85,204,0.08);
+      background: rgba(0, 85, 204, 0.08);
       padding: 0.35rem 1.2rem;
       color: #003d99;
     }
+
     .thanks-user img {
       width: 24px;
       height: 24px;
@@ -410,6 +481,7 @@
       padding: 1rem 2.2rem;
       color: #1e1e1e;
     }
+
     .footer a {
       color: #0055cc;
       text-decoration: none;
@@ -419,14 +491,22 @@
       gap: 0.3rem;
       transition: color 0.2s ease;
     }
-    .footer a:hover { color: #003d99; text-decoration: underline; }
-    .footer i { font-size: 1.2rem; }
+
+    .footer a:hover {
+      color: #003d99;
+      text-decoration: underline;
+    }
+
+    .footer i {
+      font-size: 1.2rem;
+    }
 
     .made-by {
       margin-top: 1rem;
       font-weight: 500;
       color: #2b2b2b;
     }
+
     .made-by a {
       color: #0055cc;
       font-weight: 700;
@@ -439,7 +519,11 @@
       text-decoration: none;
       transition: color 0.2s ease;
     }
-    .privacy-link:hover { color: #0055cc; text-decoration: underline; }
+
+    .privacy-link:hover {
+      color: #0055cc;
+      text-decoration: underline;
+    }
 
     .made-by img {
       width: 24px;
@@ -453,9 +537,9 @@
       font-size: 0.85rem;
       font-weight: 400;
       color: #0055cc;
-      background: rgba(0,85,204,0.06);
+      background: rgba(0, 85, 204, 0.06);
       padding: 0.2rem 0.9rem;
-      border: 1px solid rgba(0,85,204,0.15);
+      border: 1px solid rgba(0, 85, 204, 0.15);
       margin-left: 0.5rem;
       display: inline-block;
     }
@@ -463,16 +547,25 @@
     .fullscreen-overlay {
       display: none;
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
       z-index: 1000;
       justify-content: center;
       align-items: center;
       cursor: pointer;
     }
-    .fullscreen-overlay.active { display: flex; }
+
+    .fullscreen-overlay.active {
+      display: flex;
+    }
+
     .fullscreen-overlay img {
-      max-width: 90%; max-height: 90%; object-fit: contain;
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
       cursor: default;
     }
 
@@ -483,45 +576,61 @@
       margin: 2rem 0 1rem;
       overflow-x: auto;
     }
+
     .comparison-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.9rem;
       background: transparent;
     }
+
     .comparison-table th,
     .comparison-table td {
       padding: 0.6rem 0.5rem;
-      border: 1px solid rgba(0,85,204,0.15);
+      border: 1px solid rgba(0, 85, 204, 0.15);
       text-align: left;
       vertical-align: middle;
       background: transparent;
     }
+
     .comparison-table th {
-      background: rgba(0,85,204,0.04);
+      background: rgba(0, 85, 204, 0.04);
       font-weight: 600;
       color: #003d99;
-      border-bottom: 2px solid rgba(0,85,204,0.2);
+      border-bottom: 2px solid rgba(0, 85, 204, 0.2);
     }
+
     .comparison-table .highlight-row td {
-      background: rgba(0,85,204,0.06);
-      border-color: rgba(0,85,204,0.3);
+      background: rgba(0, 85, 204, 0.06);
+      border-color: rgba(0, 85, 204, 0.3);
       font-weight: 500;
     }
+
     .comparison-table .highlight-row td:first-child {
-      background: rgba(0,85,204,0.10);
+      background: rgba(0, 85, 204, 0.10);
       font-weight: 600;
       color: #0055cc;
     }
-    .comparison-table .yes { color: #0a7a3a; font-weight: 600; }
-    .comparison-table .no { color: #b00030; font-weight: 600; }
+
+    .comparison-table .yes {
+      color: #0a7a3a;
+      font-weight: 600;
+    }
+
+    .comparison-table .no {
+      color: #b00030;
+      font-weight: 600;
+    }
+
     .comparison-table .tool-name {
       font-weight: 600;
       white-space: nowrap;
     }
+
     .comparison-table .tool-name.hw {
       color: #0055cc;
     }
+
     .comparison-table .subnote {
       font-size: 0.7rem;
       font-weight: 400;
@@ -529,110 +638,304 @@
       display: block;
       line-height: 1.3;
     }
+
     @media (max-width: 700px) {
       .comparison-table {
         font-size: 0.7rem;
       }
+
       .comparison-table th,
       .comparison-table td {
         padding: 0.4rem 0.3rem;
       }
+
       .comparison-table .subnote {
         font-size: 0.6rem;
       }
     }
+
     @media (prefers-color-scheme: dark) {
       .comparison-table th {
         color: #8cb4ff;
-        background: rgba(92,156,255,0.08);
-        border-color: rgba(92,156,255,0.2);
+        background: rgba(92, 156, 255, 0.08);
+        border-color: rgba(92, 156, 255, 0.2);
       }
+
       .comparison-table td {
-        border-color: rgba(92,156,255,0.15);
+        border-color: rgba(92, 156, 255, 0.15);
       }
+
       .comparison-table .highlight-row td {
-        background: rgba(92,156,255,0.08);
-        border-color: rgba(92,156,255,0.25);
+        background: rgba(92, 156, 255, 0.08);
+        border-color: rgba(92, 156, 255, 0.25);
       }
+
       .comparison-table .highlight-row td:first-child {
-        background: rgba(92,156,255,0.15);
+        background: rgba(92, 156, 255, 0.15);
         color: #8cb4ff;
       }
-      .comparison-table .yes { color: #5cdb8a; }
-      .comparison-table .no { color: #ff6b8a; }
-      .comparison-table .subnote { color: #aaa; }
-      .comparison-table .tool-name.hw { color: #8cb4ff; }
+
+      .comparison-table .yes {
+        color: #5cdb8a;
+      }
+
+      .comparison-table .no {
+        color: #ff6b8a;
+      }
+
+      .comparison-table .subnote {
+        color: #aaa;
+      }
+
+      .comparison-table .tool-name.hw {
+        color: #8cb4ff;
+      }
     }
 
     @media (max-width: 768px) {
-      .hero-image { height: 350px; }
-      .content { margin-top: 180px; padding: 1.5rem 1rem; }
-      h1 { font-size: 2.2rem; }
-      .subtitle { font-size: 1rem; padding: 0.5rem 1rem; }
-      .description { font-size: 0.95rem; padding: 1rem; }
-      .download-grid { padding: 1rem 0.5rem; gap: 0.6rem; }
-      .btn { font-size: 0.8rem; padding: 0.6rem 1rem; }
-      h4 { font-size: 1.25rem; }
-      ul { max-width: 100%; }
-      li { font-size: 0.9rem; padding: 0.6rem 0.8rem; }
-      .gallery-item img { width: 100px; }
-      .footer { gap: 1rem; font-size: 0.85rem; padding: 0.8rem 1rem; flex-direction: column; }
-      .thanks-list { gap: 0.5rem 0.8rem; }
-      .thanks-user { padding: 0.3rem 0.8rem; font-size: 0.9rem; }
+      .hero-image {
+        height: 350px;
+      }
+
+      .content {
+        margin-top: 180px;
+        padding: 1.5rem 1rem;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .description {
+        font-size: 0.95rem;
+        padding: 1rem;
+      }
+
+      .download-grid {
+        padding: 1rem 0.5rem;
+        gap: 0.6rem;
+      }
+
+      .btn {
+        font-size: 0.8rem;
+        padding: 0.6rem 1rem;
+      }
+
+      h4 {
+        font-size: 1.25rem;
+      }
+
+      ul {
+        max-width: 100%;
+      }
+
+      li {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+      }
+
+      .gallery-item img {
+        width: 100px;
+      }
+
+      .footer {
+        gap: 1rem;
+        font-size: 0.85rem;
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+      }
+
+      .thanks-list {
+        gap: 0.5rem 0.8rem;
+      }
+
+      .thanks-user {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.9rem;
+      }
     }
+
     @media (max-width: 480px) {
-      .content { margin-top: 150px; padding: 1rem 0.5rem; }
-      h1 { font-size: 1.8rem; }
-      .download-grid { flex-direction: column; align-items: stretch; width: 100%; }
-      .btn { justify-content: center; text-align: center; }
-      .gallery-item img { width: 80px; }
-      .screenshots { gap: 0.5rem; }
+      .content {
+        margin-top: 150px;
+        padding: 1rem 0.5rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .download-grid {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+
+      .btn {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .gallery-item img {
+        width: 80px;
+      }
+
+      .screenshots {
+        gap: 0.5rem;
+      }
     }
 
     @media (prefers-color-scheme: dark) {
-      body { background-color: #1a1a1a; color: #e6e6e6; }
-      .hero-image { opacity: 0.7; }
-      h1 { color: #5c9cff; }
-      .version-badge { color: #5c9cff; background: rgba(92,156,255,0.15); border-color: rgba(92,156,255,0.3); }
-      .subtitle, .description, .download-grid, .footer, .made-by { color: #ddd; }
-      .btn { background: #1f6feb; color: white; }
-      .btn-outline { background: transparent; border-color: #5c9cff; color: #5c9cff; }
-      .btn-outline:hover { background: rgba(92,156,255,0.1); }
-      h2, h4 { color: #8cb4ff; }
-      li { border-color: rgba(92,156,255,0.25); }
-      li i, li .geode-icon { color: #5c9cff; }
-      .thanks-user { background: rgba(92,156,255,0.15); color: #c2d9ff; }
-      .footer a, .made-by a { color: #8cb4ff; }
-      .footer a:hover { color: #a0c4ff; }
-      .gallery-item img { border-color: rgba(92,156,255,0.4); }
-      .privacy-link { color: #888; }
-      .privacy-link:hover { color: #8cb4ff; }
-      .popup-card { background: #2a2a2a; color: #eee; }
-      .popup-card code { background: #3a3a4a; color: #d0d0e0; }
-      .popup-actions .copy-btn { background: #3a4a6a; color: #b0d0ff; }
-      .popup-actions .copy-btn:hover { background: #4a5a8a; }
-      .popup-actions .close-btn { color: #bbb; border-color: #555; }
-      .popup-actions .close-btn:hover { background: #333; }
-      .tooltip-wrapper .tooltip-text { background: #2c2c2c; color: #eee; }
-      .tooltip-wrapper .tooltip-text::after { border-color: #2c2c2c transparent transparent transparent; }
-      .download-count-badge { color: #8cb4ff; background: rgba(92,156,255,0.1); border-color: rgba(92,156,255,0.2); }
-      .btn-highlight {
-        box-shadow: 0 0 0 3px rgba(92,156,255,0.6);
+      body {
+        background-color: #1a1a1a;
+        color: #e6e6e6;
       }
+
+      .hero-image {
+        opacity: 0.7;
+      }
+
+      h1 {
+        color: #5c9cff;
+      }
+
+      .version-badge {
+        color: #5c9cff;
+        background: rgba(92, 156, 255, 0.15);
+        border-color: rgba(92, 156, 255, 0.3);
+      }
+
+      .subtitle,
+      .description,
+      .download-grid,
+      .footer,
+      .made-by {
+        color: #ddd;
+      }
+
+      .btn {
+        background: #1f6feb;
+        color: white;
+      }
+
+      .btn-outline {
+        background: transparent;
+        border-color: #5c9cff;
+        color: #5c9cff;
+      }
+
+      .btn-outline:hover {
+        background: rgba(92, 156, 255, 0.1);
+      }
+
+      h2,
+      h4 {
+        color: #8cb4ff;
+      }
+
+      li {
+        border-color: rgba(92, 156, 255, 0.25);
+      }
+
+      li i,
+      li .geode-icon {
+        color: #5c9cff;
+      }
+
+      .thanks-user {
+        background: rgba(92, 156, 255, 0.15);
+        color: #c2d9ff;
+      }
+
+      .footer a,
+      .made-by a {
+        color: #8cb4ff;
+      }
+
+      .footer a:hover {
+        color: #a0c4ff;
+      }
+
+      .gallery-item img {
+        border-color: rgba(92, 156, 255, 0.4);
+      }
+
+      .privacy-link {
+        color: #888;
+      }
+
+      .privacy-link:hover {
+        color: #8cb4ff;
+      }
+
+      .popup-card {
+        background: #2a2a2a;
+        color: #eee;
+      }
+
+      .popup-card code {
+        background: #3a3a4a;
+        color: #d0d0e0;
+      }
+
+      .popup-actions .copy-btn {
+        background: #3a4a6a;
+        color: #b0d0ff;
+      }
+
+      .popup-actions .copy-btn:hover {
+        background: #4a5a8a;
+      }
+
+      .popup-actions .close-btn {
+        color: #bbb;
+        border-color: #555;
+      }
+
+      .popup-actions .close-btn:hover {
+        background: #333;
+      }
+
+      .tooltip-wrapper .tooltip-text {
+        background: #2c2c2c;
+        color: #eee;
+      }
+
+      .tooltip-wrapper .tooltip-text::after {
+        border-color: #2c2c2c transparent transparent transparent;
+      }
+
+      .download-count-badge {
+        color: #8cb4ff;
+        background: rgba(92, 156, 255, 0.1);
+        border-color: rgba(92, 156, 255, 0.2);
+      }
+
+      .btn-highlight {
+        box-shadow: 0 0 0 3px rgba(92, 156, 255, 0.6);
+      }
+
       .btn-outline.btn-highlight {
-        background: rgba(92,156,255,0.2);
+        background: rgba(92, 156, 255, 0.2);
         color: #ffffff;
         border-color: #8cb4ff;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="hero-image" aria-hidden="true"></div>
 
   <div class="popup-overlay" id="altPopup">
     <div class="popup-card">
-      <p>There won't be packaging for linux🥀 BUT if you got pip/pipx you could do <code id="altCmd">pipx install hwgdreqs</code> and it gets installed</p>
+      <p>There won't be packaging for linux🥀 BUT if you got pip/pipx you could do <code
+          id="altCmd">pipx install hwgdreqs</code> and it gets installed</p>
       <div class="popup-actions">
         <button class="copy-btn" id="copyCmdBtn"><i class="nf nf-md-content_copy"></i> Copy</button>
         <button class="close-btn" id="closePopupBtn">Close</button>
@@ -642,7 +945,8 @@
 
   <div class="popup-overlay" id="macQuarantinePopup">
     <div class="popup-card">
-      <p>🔐 Quarantine hates this application btw.<br>After you move it to your <strong>Applications</strong> folder, open Terminal and run:</p>
+      <p>🔐 Quarantine hates this application btw.<br>After you move it to your <strong>Applications</strong> folder,
+        open Terminal and run:</p>
       <code id="macQuarantineCmd">xattr -r com.apple.quarantine /Applications/HwGDReqs.app</code>
       <div class="popup-actions">
         <button class="copy-btn" id="copyMacQuarantineBtn"><i class="nf nf-md-content_copy"></i> Copy</button>
@@ -655,7 +959,8 @@
     <h1>HwGDReqs</h1>
     <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem;">
       <span class="version-badge" id="versionBadge">umm</span>
-      <span class="download-count-badge" id="downloadCountBadge"><i class="nf nf-fa-download"></i> <span id="downloadCount">0</span> total downloads</span>
+      <span class="download-count-badge" id="downloadCountBadge"><i class="nf nf-fa-download"></i> <span
+          id="downloadCount">0</span> total downloads</span>
     </div>
     <div class="subtitle">
       <i class="nf nf-md-controller"></i> Geometry Dash level requests for Twitch & YouTube
@@ -673,9 +978,14 @@
 
     <h4><i class="nf nf-md-star"></i> Features</h4>
     <ul>
-      <li><i class="nf nf-md-twitch"></i><i class="nf nf-md-youtube"></i><i class="nf nf-fa-kickstarter_k"></i> Twitch + YouTube + Kick(Beta) support</li>
+      <li><i class="nf nf-md-twitch"></i><i class="nf nf-md-youtube"></i><i class="nf nf-fa-kickstarter_k"></i> Twitch +
+        YouTube + Kick(paused support) support</li>
       <li class="tooltip-wrapper">
-        <svg class="geode-icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Geode</title><path d="M12 0c-.30206 0-.60438.09583-.85742.28906L.5957 8.34375c-.4705.3593-.66703.97346-.49218 1.53906l4.05664 13.1211c.1829.59168.7303.99609 1.3496.99609h12.98047c.61931 0 1.1667-.40441 1.34961-.9961l4.05664-13.12109c.17485-.5656-.02168-1.17975-.49218-1.53906l-.97266-.74219-1.11914 3.51758-3.07031 9.99024c-.12005.3903-.48032.65624-.88868.65624H6.57813c-.40836 0-.76863-.26593-.88868-.65624l-3.36132-10.9336c-.11419-.37133.01411-.77514.32226-1.01172l8.74805-6.7168a.93.93 0 0 1 .10937-.07226L13.55273.82031l-.6953-.53125C12.60437.09583 12.30205 0 12 0m.06836 4.75781c-.16254 0-.32493.05197-.46094.15625l-6.52344 5.0039c-.25142.19277-.35688.52145-.26367.82423l.4336 1.4082 2.19726-1.61914 4.31445-3.37695c.13717-.10727.33159-.10727.46875 0l4.70508 3.68164c.12315.09628.17407.25661.1289.40625l-1.80858 5.99219c-.0483.15993-.19619.26953-.36329.26953H9.10352a.377.377 0 0 1-.07618-.0078H6.9004l.42774 1.39257c.0979.3179.39196.53516.7246.53516h8.0332c.33265 0 .62477-.21725.72266-.53516l2.50977-8.14648c.09321-.30278-.01225-.63146-.26367-.82422l-6.5254-5.00392c-.136-.10428-.29839-.15625-.46093-.15625Z"/></svg>
+        <svg class="geode-icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <title>Geode</title>
+          <path
+            d="M12 0c-.30206 0-.60438.09583-.85742.28906L.5957 8.34375c-.4705.3593-.66703.97346-.49218 1.53906l4.05664 13.1211c.1829.59168.7303.99609 1.3496.99609h12.98047c.61931 0 1.1667-.40441 1.34961-.9961l4.05664-13.12109c.17485-.5656-.02168-1.17975-.49218-1.53906l-.97266-.74219-1.11914 3.51758-3.07031 9.99024c-.12005.3903-.48032.65624-.88868.65624H6.57813c-.40836 0-.76863-.26593-.88868-.65624l-3.36132-10.9336c-.11419-.37133.01411-.77514.32226-1.01172l8.74805-6.7168a.93.93 0 0 1 .10937-.07226L13.55273.82031l-.6953-.53125C12.60437.09583 12.30205 0 12 0m.06836 4.75781c-.16254 0-.32493.05197-.46094.15625l-6.52344 5.0039c-.25142.19277-.35688.52145-.26367.82423l.4336 1.4082 2.19726-1.61914 4.31445-3.37695c.13717-.10727.33159-.10727.46875 0l4.70508 3.68164c.12315.09628.17407.25661.1289.40625l-1.80858 5.99219c-.0483.15993-.19619.26953-.36329.26953H9.10352a.377.377 0 0 1-.07618-.0078H6.9004l.42774 1.39257c.0979.3179.39196.53516.7246.53516h8.0332c.33265 0 .62477-.21725.72266-.53516l2.50977-8.14648c.09321-.30278-.01225-.63146-.26367-.82422l-6.5254-5.00392c-.136-.10428-.29839-.15625-.46093-.15625Z" />
+        </svg>
         Geode Integration mod (installed from the desktop app)
         <span class="tooltip-text">
           "Why this will NOT make it to the Geode in-game browser/index? "
@@ -687,15 +997,21 @@
           /send the code to a clanker and confirm it's safe alr im tired writing ts
         </span>
       </li>
-      <li><i class="nf nf-md-account_edit"></i> People can Add, remove, replace. Only the requester can modify their own levels.</li>
+      <li><i class="nf nf-md-star"></i>Punishment system! someone spamming your queue with the same level? no problem,
+        just delete their level! </li>
+      <li><i class="nf nf-md-account_edit"></i> People can Add, remove, replace. Only the requester can modify their own
+        levels.</li>
       <li><i class="nf nf-md-cancel"></i> Block levels, authors, or requesters. Keep the chat clean.</li>
       <li><i class="nf nf-md-chart_bar"></i> Difficulty, length, and auto-block disliked levels.</li>
       <li><i class="nf nf-md-image_area"></i> Live previews via the Level Thumbnails API. Cached...</li>
-      <li><i class="nf nf-md-api"></i> REST HTTP API for the geode mod and other apps (customizable port with local network)</li>
+      <li><i class="nf nf-md-api"></i> REST HTTP API for the geode mod and other apps (customizable port with local
+        network)</li>
       <li><i class="nf nf-md-chat_processing"></i> !del and !replace (and !queue and !whereami <b>twitch only</b>)</li>
-      <li><i class="nf nf-md-account_cancel"></i> Ability to ban requesters off your twitch chat (even in the geode mod)</li>
+      <li><i class="nf nf-md-account_cancel"></i> Ability to ban requesters off your twitch chat (even in the geode mod)
+      </li>
       <li><i class="nf nf-md-crown"></i> Subs prio/only, superchat prio/only, members prio/only</li>
-      <li><i class="nf nf-md-monitor_screenshot"></i> Pop out queue button for OBS window capture, change text scale & make transparent</li>
+      <li><i class="nf nf-md-monitor_screenshot"></i> Pop out queue button for OBS window capture, change text scale &
+        make transparent</li>
       <li><i class="nf nf-md-harddisk"></i> Everything runs inside your PC</li>
     </ul>
 
@@ -709,6 +1025,7 @@
       <div class="gallery-item"><img src="assets/4.png" alt="Screenshot 4" loading="lazy"></div>
       <div class="gallery-item"><img src="assets/5.png" alt="Screenshot 5" loading="lazy"></div>
       <div class="gallery-item"><img src="assets/6.png" alt="Screenshot 6" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/7.png" alt="Screenshot 7" loading="lazy"></div>
     </div>
 
     <!-- comparison section -->
@@ -748,11 +1065,13 @@
             </tr>
             <tr class="highlight-row">
               <td class="tool-name hw">Kick support</td>
-              <td><span class="yes">✓</span></td>
+              <td><span class="no">✗</span><span class="subnote">(Code is there, but until someone needs it this wont be
+                  maintained)</span></td>
               <td><span class="no">✗</span></td>
               <td><span class="no">✗</span></td>
               <td><span class="no">✗</span></td>
-              <td><span class="no">✗</span><span class="subnote">(Before shutting down it promised support but never delivered)</span></td>
+              <td><span class="no">✗</span><span class="subnote">(Before shutting down it promised support but never
+                  delivered)</span></td>
               <td><span class="no">✗</span></td>
             </tr>
             <tr class="highlight-row">
@@ -803,9 +1122,11 @@
             <tr class="highlight-row">
               <td class="tool-name hw">Ease of Setup and use</td>
               <td><span class="yes">✓</span></td>
-              <td><span class="no">✗</span><span class="subnote">(manually make an API key from req.gd on mod settings)</span></td>
+              <td><span class="no">✗</span><span class="subnote">(manually make an API key from req.gd on mod
+                  settings)</span></td>
               <td><span class="no">✗</span></td>
-              <td><span class="no">✗</span><span class="subnote">(manually pasting a Token code on mod settings)</span></td>
+              <td><span class="no">✗</span><span class="subnote">(manually pasting a Token code on mod settings)</span>
+              </td>
               <td><span class="yes">✓</span></td>
               <td><span class="yes">✓</span></td>
             </tr>
@@ -829,16 +1150,17 @@
       <div class="thanks-user"><img src="assets/tekain.png" alt="tekain" loading="lazy"><span>tekain</span></div>
       <div class="thanks-user"><img src="assets/seamon.png" alt="Seamon" loading="lazy"><span>Seamon</span></div>
       <div class="thanks-user"><img src="assets/purblic.png" alt="purblic" loading="lazy"><span>purblic</span></div>
-      <div class="thanks-user"><span>yes thats it (dm proof on Discord)</span></div>
+      <div class="thanks-user"><span>yes thats it</span></div>
     </div>
 
     <div class="made-by">
-      Made by <a href="https://discord.com/users/1131020856827580508" target="_blank"><img src="assets/MalikHw47.png" alt="MalikHw47"> MalikHw47</a>
+      Made by <a href="https://discord.com/users/1131020856827580508" target="_blank"><img src="assets/MalikHw47.png"
+          alt="MalikHw47"> MalikHw47</a>
     </div>
 
     <div class="footer">
       <a href="https://github.com/HwGDReqs" target="_blank"><i class="nf nf-md-github"></i> GitHub</a>
-      <a href="https://discord.com/users/1131020856827580508" target="_blank"><i class="nf nf-md-discord"></i> Discord</a>
+      <a href="https://discord.gg/6AGZFRgTwc" target="_blank"><i class="nf nf-md-discord"></i> Discord Server</a>
       <a href="https://www.youtube.com/@MalikHw47" target="_blank"><i class="nf nf-md-youtube"></i> YouTube</a>
       <a href="https://www.twitch.tv/malikhw47" target="_blank"><i class="nf nf-md-twitch"></i> Twitch</a>
       <a href="https://malikhw.github.io/donate" target="_blank"><i class="nf nf-fa-dollar"></i> Donate</a>
@@ -853,7 +1175,7 @@
   </div>
 
   <script>
-    (function() {
+    (function () {
       const versionBadge = document.getElementById('versionBadge');
       const downloadCountSpan = document.getElementById('downloadCount');
       const primaryRow = document.getElementById('primaryDownloadRow');
@@ -995,7 +1317,7 @@
         macPopup.style.display = 'none';
       }
 
-      document.addEventListener('click', function(e) {
+      document.addEventListener('click', function (e) {
         const target = e.target.closest('a');
         if (!target) return;
         const href = target.getAttribute('href') || '';
@@ -1009,7 +1331,7 @@
         }
       });
 
-      copyMacBtn.addEventListener('click', function() {
+      copyMacBtn.addEventListener('click', function () {
         const text = macCmd.textContent;
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(text).then(() => {
@@ -1033,8 +1355,8 @@
       }
 
       closeMacBtn.addEventListener('click', closeMacPopup);
-      macPopup.addEventListener('click', function(e) { if (e.target === macPopup) closeMacPopup(); });
-      document.addEventListener('keydown', function(e) {
+      macPopup.addEventListener('click', function (e) { if (e.target === macPopup) closeMacPopup(); });
+      document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && macPopup.classList.contains('active')) closeMacPopup();
       });
 
@@ -1045,21 +1367,21 @@
       const altCmdEl = document.getElementById('altCmd');
 
       if (altOpenBtn) {
-        altOpenBtn.addEventListener('click', function(e) {
+        altOpenBtn.addEventListener('click', function (e) {
           e.preventDefault();
           altPopup.classList.add('active');
           altPopup.style.display = 'flex';
         });
       }
       if (altCloseBtn) {
-        altCloseBtn.addEventListener('click', function() {
+        altCloseBtn.addEventListener('click', function () {
           altPopup.classList.remove('active');
           altPopup.style.display = 'none';
         });
       }
-      altPopup.addEventListener('click', function(e) { if (e.target === altPopup) { altPopup.classList.remove('active'); altPopup.style.display = 'none'; } });
+      altPopup.addEventListener('click', function (e) { if (e.target === altPopup) { altPopup.classList.remove('active'); altPopup.style.display = 'none'; } });
       if (altCopyBtn && altCmdEl) {
-        altCopyBtn.addEventListener('click', function() {
+        altCopyBtn.addEventListener('click', function () {
           const text = altCmdEl.textContent.trim();
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(text).then(() => {
@@ -1081,7 +1403,7 @@
         altCopyBtn.innerHTML = '<i class="nf nf-md-check"></i> Copied!';
         setTimeout(() => { altCopyBtn.innerHTML = '<i class="nf nf-md-content_copy"></i> Copy'; }, 2000);
       }
-      document.addEventListener('keydown', function(e) {
+      document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && altPopup.classList.contains('active')) {
           altPopup.classList.remove('active');
           altPopup.style.display = 'none';
@@ -1093,18 +1415,19 @@
       document.querySelectorAll('.gallery-item').forEach(item => {
         const img = item.querySelector('img');
         if (!img) return;
-        item.addEventListener('click', function(e) {
+        item.addEventListener('click', function (e) {
           e.stopPropagation();
           fullImg.src = img.src;
           overlay.classList.add('active');
           document.body.style.overflow = 'hidden';
         });
       });
-      overlay.addEventListener('click', function(e) { if (e.target === overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; } });
-      fullImg.addEventListener('click', function(e) { e.stopPropagation(); overlay.classList.remove('active'); document.body.style.overflow = ''; });
-      document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && overlay.classList.contains('active')) { overlay.classList.remove('active'); document.body.style.overflow = ''; } });
+      overlay.addEventListener('click', function (e) { if (e.target === overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; } });
+      fullImg.addEventListener('click', function (e) { e.stopPropagation(); overlay.classList.remove('active'); document.body.style.overflow = ''; });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.classList.contains('active')) { overlay.classList.remove('active'); document.body.style.overflow = ''; } });
 
     })();
   </script>
 </body>
+
 </html>
