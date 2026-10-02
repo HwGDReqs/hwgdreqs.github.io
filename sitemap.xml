@@ -20,4 +20,10 @@
        <changefreq>daily</changefreq>
        <priority>0.6400</priority>
   </url>
+  <url>
+       <loc>https://hwgdreqs.github.io/mobile/index.html</loc>
+       <lastmod>2026-10-02T20:30:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
 </urlset>
