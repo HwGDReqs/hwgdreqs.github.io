@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Android app companion - HwGDReqs</title>
+  <meta property="og:title" content="Android app companion - HwGDReqs" />
+  <meta property="og:description" content="Mobile companion app for HwGDReqs desktop application" />
+  <meta property="og:image" content="../bg.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Android app companion - HwGDReqs" />
+  <meta name="twitter:description" content="Mobile companion app for HwGDReqs desktop application" />
+  <meta name="twitter:image" content="../bg.png" />
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="https://www.nerdfonts.com/assets/css/webfont.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background-color: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 520px;
+      background-image: url('../bg.png');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+      z-index: 0;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 950px;
+      padding: 2.5rem 2rem 2rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 280px;
+    }
+
+    h1 {
+      font-family: 'Google Sans', 'Segoe UI', system-ui, sans-serif;
+      font-size: 3.4rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #0055cc;
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .version-badge {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #0055cc;
+      background: rgba(0, 85, 204, 0.08);
+      padding: 0.25rem 0.9rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      border: 1px solid rgba(0, 85, 204, 0.2);
+    }
+
+    .download-count-badge {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #0055cc;
+      background: rgba(0, 85, 204, 0.06);
+      padding: 0.2rem 0.9rem;
+      border: 1px solid rgba(0, 85, 204, 0.15);
+      margin-left: 0.5rem;
+      display: inline-block;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #2c2c2c;
+      padding: 0.6rem 1.8rem;
+      margin: 0.5rem 0 1.8rem;
+      text-align: center;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 2.2rem;
+      padding: 1.2rem 2rem;
+      color: #1e1e1e;
+    }
+
+    .download-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      margin: 1.2rem 0 2.2rem;
+      padding: 1.5rem 1.8rem;
+      flex-direction: column;
+    }
+
+    .download-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      width: 100%;
+    }
+
+    .btn {
+      background: #0055cc;
+      color: white;
+      text-decoration: none;
+      padding: 0.7rem 1.4rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.15rem;
+      transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      border: 2px solid transparent;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      cursor: pointer;
+      border-radius: 0px;
+      position: relative;
+    }
+
+    .btn i {
+      font-size: 1.1rem;
+    }
+
+    .btn:hover {
+      background: #003d99;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #0055cc;
+      border: 2px solid #0055cc;
+    }
+
+    .btn-outline:hover {
+      background: rgba(0, 85, 204, 0.08);
+      color: #003d99;
+      border-color: #003d99;
+    }
+
+    .btn-highlight {
+      box-shadow: 0 0 0 3px rgba(0, 85, 204, 0.4);
+      border-color: #0055cc;
+      background: #0055cc;
+      color: white;
+    }
+
+    .btn-outline.btn-highlight {
+      background: rgba(0, 85, 204, 0.12);
+      border-color: #0055cc;
+      color: #0055cc;
+      box-shadow: 0 0 0 3px rgba(0, 85, 204, 0.25);
+    }
+
+    .btn-subtitle {
+      font-size: 0.7rem;
+      font-weight: 400;
+      opacity: 0.9;
+      line-height: 1.2;
+      margin-top: -0.1rem;
+      white-space: nowrap;
+    }
+
+    .btn-main-action {
+      padding: 0.9rem 2.2rem;
+      font-size: 1.1rem;
+    }
+
+    .btn-main-action i {
+      font-size: 1.3rem;
+    }
+
+    .btn-main-action .btn-subtitle {
+      font-size: 0.78rem;
+    }
+
+    h2,
+    h4 {
+      color: #003d99;
+      margin-top: 1.8rem;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.2rem;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      margin-top: 2.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 1.5rem;
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 1.05rem;
+      padding: 0.8rem 1.2rem;
+      border: 1px solid rgba(0, 85, 204, 0.1);
+      background: rgba(0, 85, 204, 0.02);
+      line-height: 1.6;
+    }
+
+    li i {
+      color: #0055cc;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+      font-size: 1.25rem;
+    }
+
+    li strong {
+      color: #003d99;
+    }
+
+    li a {
+      color: #0055cc;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    li a:hover {
+      color: #003d99;
+      text-decoration: underline;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.6rem;
+      height: 1.6rem;
+      background: rgba(0, 85, 204, 0.12);
+      color: #0055cc;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-right: 0.3rem;
+      flex-shrink: 0;
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8rem;
+      font-size: 0.95rem;
+      padding: 1rem 2.2rem;
+      color: #1e1e1e;
+    }
+
+    .footer a {
+      color: #0055cc;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer a:hover {
+      color: #003d99;
+      text-decoration: underline;
+    }
+
+    .footer i {
+      font-size: 1.2rem;
+    }
+
+    .made-by {
+      margin-top: 1rem;
+      font-weight: 500;
+      color: #2b2b2b;
+    }
+
+    .made-by a {
+      color: #0055cc;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .made-by a:hover {
+      text-decoration: underline;
+    }
+
+    .privacy-link {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: #666;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .privacy-link:hover {
+      color: #0055cc;
+      text-decoration: underline;
+    }
+
+    .made-by img {
+      width: 24px;
+      height: 24px;
+      object-fit: cover;
+      border-radius: 0%;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 768px) {
+      .hero-image {
+        height: 350px;
+      }
+
+      .content {
+        margin-top: 180px;
+        padding: 1.5rem 1rem;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .description {
+        font-size: 0.95rem;
+        padding: 1rem;
+      }
+
+      .download-grid {
+        padding: 1rem 0.5rem;
+        gap: 0.6rem;
+      }
+
+      .btn {
+        font-size: 0.8rem;
+        padding: 0.6rem 1rem;
+      }
+
+      .btn-main-action {
+        font-size: 0.95rem;
+        padding: 0.75rem 1.4rem;
+      }
+
+      h4 {
+        font-size: 1.25rem;
+      }
+
+      ul {
+        max-width: 100%;
+      }
+
+      li {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+      }
+
+      .footer {
+        gap: 1rem;
+        font-size: 0.85rem;
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content {
+        margin-top: 150px;
+        padding: 1rem 0.5rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .download-grid {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+
+      .download-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1a1a1a;
+        color: #e6e6e6;
+      }
+
+      .hero-image {
+        opacity: 0.7;
+      }
+
+      h1 {
+        color: #5c9cff;
+      }
+
+      .version-badge {
+        color: #5c9cff;
+        background: rgba(92, 156, 255, 0.15);
+        border-color: rgba(92, 156, 255, 0.3);
+      }
+
+      .subtitle,
+      .description,
+      .download-grid,
+      .footer,
+      .made-by {
+        color: #ddd;
+      }
+
+      .btn {
+        background: #1f6feb;
+        color: white;
+      }
+
+      .btn:hover {
+        background: #1a5fcc;
+      }
+
+      .btn-outline {
+        background: transparent;
+        border-color: #5c9cff;
+        color: #5c9cff;
+      }
+
+      .btn-outline:hover {
+        background: rgba(92, 156, 255, 0.1);
+      }
+
+      .btn-highlight {
+        box-shadow: 0 0 0 3px rgba(92, 156, 255, 0.6);
+      }
+
+      .download-count-badge {
+        color: #8cb4ff;
+        background: rgba(92, 156, 255, 0.1);
+        border-color: rgba(92, 156, 255, 0.2);
+      }
+
+      h2,
+      h4 {
+        color: #8cb4ff;
+      }
+
+      li {
+        border-color: rgba(92, 156, 255, 0.25);
+        background: rgba(92, 156, 255, 0.05);
+      }
+
+      li i {
+        color: #5c9cff;
+      }
+
+      li strong {
+        color: #8cb4ff;
+      }
+
+      li a {
+        color: #8cb4ff;
+      }
+
+      li a:hover {
+        color: #a0c4ff;
+      }
+
+      .step-number {
+        background: rgba(92, 156, 255, 0.2);
+        color: #8cb4ff;
+      }
+
+      .footer a,
+      .made-by a {
+        color: #8cb4ff;
+      }
+
+      .footer a:hover,
+      .made-by a:hover {
+        color: #a0c4ff;
+      }
+
+      .privacy-link {
+        color: #888;
+      }
+
+      .privacy-link:hover {
+        color: #8cb4ff;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero-image" aria-hidden="true"></div>
+
+  <div class="content">
+    <h1>Android app companion</h1>
+    <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem;">
+      <span class="version-badge" id="versionBadge">latest</span>
+      <span class="download-count-badge" id="downloadCountBadge"><i class="nf nf-fa-download"></i> <span
+          id="downloadCount">0</span> downloads</span>
+    </div>
+
+    <div class="subtitle">
+      <i class="nf nf-md-cellphone"></i> Mobile companion for HwGDReqs Desktop
+    </div>
+
+    <div class="description">
+      Control and monitor your Geometry Dash level request queue on the fly from your Android device.
+      This app works as a companion alongside the HwGDReqs desktop application.
+    </div>
+
+    <div class="download-grid" id="downloadGrid">
+      <div class="download-row">
+        <a href="https://github.com/hwgdreqs/android-companion-apparently/releases/latest/download/app-release.apk"
+          class="btn btn-highlight btn-main-action" id="downloadBtn">
+          <span style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            <i class="nf nf-fa-download"></i> Download latest release
+          </span>
+          <span class="btn-subtitle" id="btnSubtitle">app-release.apk</span>
+        </a>
+      </div>
+      <div class="download-row" style="margin-top: 0.4rem;">
+        <a href="../index.html" class="btn btn-outline">
+          <i class="nf nf-md-arrow_left"></i> Back to Desktop App
+        </a>
+      </div>
+    </div>
+
+    <h4><i class="nf nf-md-format_list_numbered"></i> Steps to Use</h4>
+    <ul>
+      <li>
+        <i class="nf nf-md-laptop"></i>
+        <div>
+          <span class="step-number">1</span><strong>Requires a PC</strong><br>
+          A PC running Geometry Dash and the <a href="../index.html">HwGDReqs desktop application</a> is required.
+        </div>
+      </li>
+      <li>
+        <i class="nf nf-md-download"></i>
+        <div>
+          <span class="step-number">2</span><strong>Install PC + Android apps</strong><br>
+          Install HwGDReqs on your PC and this companion app (APK) on your Android device.
+        </div>
+      </li>
+      <li>
+        <i class="nf nf-md-cellphone_cog"></i>
+        <div>
+          <span class="step-number">3</span><strong>Follow on-screen instructions</strong><br>
+          Open the companion app on Android and follow whatever instructions are displayed on screen to connect.
+        </div>
+      </li>
+    </ul>
+
+    <div class="made-by">
+      Made by <a href="https://discord.com/users/1131020856827580508" target="_blank"><img src="../assets/MalikHw47.png"
+          alt="MalikHw47"> MalikHw47</a>
+    </div>
+
+    <div class="footer">
+      <a href="https://github.com/HwGDReqs" target="_blank"><i class="nf nf-md-github"></i> GitHub</a>
+      <a href="https://discord.gg/6AGZFRgTwc" target="_blank"><i class="nf nf-md-discord"></i> Discord Server</a>
+      <a href="https://www.youtube.com/@MalikHw47" target="_blank"><i class="nf nf-md-youtube"></i> YouTube</a>
+      <a href="https://www.twitch.tv/malikhw47" target="_blank"><i class="nf nf-md-twitch"></i> Twitch</a>
+      <a href="https://malikhw.github.io/donate" target="_blank"><i class="nf nf-fa-dollar"></i> Donate</a>
+    </div>
+
+    <a href="../privacy/index.html" class="privacy-link">Privacy Policy</a>
+    <div style="height: 1.5rem;"></div>
+  </div>
+
+  <script>
+    (function () {
+      const base = 'https://api.github.com/repos/hwgdreqs/android-companion-apparently';
+      const versionBadge = document.getElementById('versionBadge');
+      const downloadCountSpan = document.getElementById('downloadCount');
+      const btnSubtitle = document.getElementById('btnSubtitle');
+      const downloadBtn = document.getElementById('downloadBtn');
+
+      fetch(base + '/releases/latest')
+        .then(r => {
+          if (!r.ok) throw new Error('latest release fetch failed');
+          return r.json();
+        })
+        .then(latest => {
+          if (latest && latest.tag_name) {
+            if (versionBadge) versionBadge.textContent = latest.tag_name;
+            const asset = latest.assets && latest.assets.find(a => a.name === 'app-release.apk');
+            if (asset) {
+              if (asset.browser_download_url) {
+                downloadBtn.href = asset.browser_download_url;
+              }
+              if (btnSubtitle && asset.size) {
+                const mb = (asset.size / (1024 * 1024)).toFixed(1);
+                btnSubtitle.textContent = `app-release.apk (${mb} MB)`;
+              }
+            }
+          }
+        })
+        .catch(err => {
+          console.warn('Could not fetch latest release', err);
+        });
+
+      fetch(base + '/releases')
+        .then(r => r.json())
+        .then(data => {
+          if (!Array.isArray(data)) return;
+          let total = 0;
+          data.forEach(release => {
+            if (release.assets && Array.isArray(release.assets)) {
+              release.assets.forEach(asset => {
+                if (asset.download_count) total += asset.download_count;
+              });
+            }
+          });
+          if (downloadCountSpan) downloadCountSpan.textContent = total.toLocaleString();
+        })
+        .catch(err => {
+          console.warn('failed to fetch total downloads', err);
+          const badge = document.getElementById('downloadCountBadge');
+          if (badge) badge.style.display = 'none';
+        });
+    })();
+  </script>
+</body>
+
+</html>
