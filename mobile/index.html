@@ -82,28 +82,6 @@
       line-height: 1.2;
     }
 
-    .version-badge {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #0055cc;
-      background: rgba(0, 85, 204, 0.08);
-      padding: 0.25rem 0.9rem;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-      border: 1px solid rgba(0, 85, 204, 0.2);
-    }
-
-    .download-count-badge {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: #0055cc;
-      background: rgba(0, 85, 204, 0.06);
-      padding: 0.2rem 0.9rem;
-      border: 1px solid rgba(0, 85, 204, 0.15);
-      margin-left: 0.5rem;
-      display: inline-block;
-    }
-
     .subtitle {
       font-size: 1.25rem;
       font-weight: 400;
@@ -120,6 +98,20 @@
       margin: 0 auto 2.2rem;
       padding: 1.2rem 2rem;
       color: #1e1e1e;
+    }
+
+    .install-section {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .install-note {
+      font-size: 0.95rem;
+      color: #555;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-style: italic;
     }
 
     .download-grid {
@@ -472,12 +464,6 @@
         color: #5c9cff;
       }
 
-      .version-badge {
-        color: #5c9cff;
-        background: rgba(92, 156, 255, 0.15);
-        border-color: rgba(92, 156, 255, 0.3);
-      }
-
       .subtitle,
       .description,
       .download-grid,
@@ -507,12 +493,6 @@
 
       .btn-highlight {
         box-shadow: 0 0 0 3px rgba(92, 156, 255, 0.6);
-      }
-
-      .download-count-badge {
-        color: #8cb4ff;
-        background: rgba(92, 156, 255, 0.1);
-        border-color: rgba(92, 156, 255, 0.2);
       }
 
       h2,
@@ -563,6 +543,10 @@
       .privacy-link:hover {
         color: #8cb4ff;
       }
+
+      .install-note {
+        color: #999;
+      }
     }
   </style>
 </head>
@@ -572,11 +556,6 @@
 
   <div class="content">
     <h1>Android app companion</h1>
-    <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem;">
-      <span class="version-badge" id="versionBadge">latest</span>
-      <span class="download-count-badge" id="downloadCountBadge"><i class="nf nf-fa-download"></i> <span
-          id="downloadCount">0</span> downloads</span>
-    </div>
 
     <div class="subtitle">
       <i class="nf nf-md-cellphone"></i> Mobile companion for HwGDReqs Desktop
@@ -587,19 +566,57 @@
       This app works as a companion alongside the HwGDReqs desktop application.
     </div>
 
-    <div class="download-grid" id="downloadGrid">
+    <div class="download-grid">
       <div class="download-row">
-        <a href="https://github.com/hwgdreqs/android-companion-apparently/releases/latest/download/app-release.apk"
-          class="btn btn-highlight btn-main-action" id="downloadBtn">
-          <span style="display: inline-flex; align-items: center; gap: 0.4rem;">
-            <i class="nf nf-fa-download"></i> Download latest release
-          </span>
-          <span class="btn-subtitle" id="btnSubtitle">app-release.apk</span>
-        </a>
-      </div>
-      <div class="download-row" style="margin-top: 0.4rem;">
         <a href="../index.html" class="btn btn-outline">
           <i class="nf nf-md-arrow_left"></i> Back to Desktop App
+        </a>
+      </div>
+    </div>
+
+    <h4><i class="nf nf-md-google_play"></i> How to Install</h4>
+    <p style="text-align:center; max-width:650px; color:#555; font-size:0.95rem; margin-bottom:1rem;">
+      The app is currently in <strong>Closed Testing</strong> on the Play Store — joining helps me get enough testers to push it to a full release! Here's how:
+    </p>
+    <ul>
+      <li>
+        <i class="nf nf-md-laptop"></i>
+        <div>
+          <span class="step-number">1</span><strong>Make sure the desktop app is running</strong><br>
+          The companion app requires the <a href="../index.html">HwGDReqs desktop app</a> to be running on your PC.
+        </div>
+      </li>
+      <li>
+        <i class="nf nf-md-google"></i>
+        <div>
+          <span class="step-number">2</span><strong>Join the Google Group</strong><br>
+          Join <a href="https://groups.google.com/g/MalikHw-apps-testers" target="_blank" rel="noopener noreferrer">MalikHw-apps-testers</a> on Google Groups to get access to the testing program.
+        </div>
+      </li>
+      <li>
+        <i class="nf nf-md-flask"></i>
+        <div>
+          <span class="step-number">3</span><strong>Opt into Closed Testing</strong><br>
+          Visit the <a href="https://play.google.com/apps/testing/com.malikhw.hwgdreqs" target="_blank" rel="noopener noreferrer">Closed Testing page</a> and accept the tester invitation.
+        </div>
+      </li>
+      <li>
+        <i class="nf nf-md-google_play"></i>
+        <div>
+          <span class="step-number">4</span><strong>Install from the Play Store</strong><br>
+          Once accepted, <a href="https://play.google.com/store/apps/details?id=com.malikhw.hwgdreqs" target="_blank" rel="noopener noreferrer">install the app from Google Play</a> and you're good to go!
+        </div>
+      </li>
+    </ul>
+
+    <div class="download-grid" style="margin-top: 0; padding-top: 0;">
+      <div class="download-row">
+        <a href="https://play.google.com/store/apps/details?id=com.malikhw.hwgdreqs"
+          class="btn btn-highlight btn-main-action" target="_blank" rel="noopener noreferrer">
+          <span style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            <i class="nf nf-md-google_play"></i> Get it on Google Play
+          </span>
+          <span class="btn-subtitle">After completing steps above</span>
         </a>
       </div>
     </div>
@@ -610,20 +627,13 @@
         <i class="nf nf-md-laptop"></i>
         <div>
           <span class="step-number">1</span><strong>Requires a PC</strong><br>
-          A PC running Geometry Dash and the <a href="../index.html">HwGDReqs desktop application</a> is required.
-        </div>
-      </li>
-      <li>
-        <i class="nf nf-md-download"></i>
-        <div>
-          <span class="step-number">2</span><strong>Install PC + Android apps</strong><br>
-          Install HwGDReqs on your PC and this companion app (APK) on your Android device.
+          A PC running the <a href="../index.html">HwGDReqs desktop application</a> is required.
         </div>
       </li>
       <li>
         <i class="nf nf-md-cellphone_cog"></i>
         <div>
-          <span class="step-number">3</span><strong>Follow on-screen instructions</strong><br>
+          <span class="step-number">2</span><strong>Follow on-screen instructions</strong><br>
           Open the companion app on Android and follow whatever instructions are displayed on screen to connect.
         </div>
       </li>
@@ -646,59 +656,6 @@
     <div style="height: 1.5rem;"></div>
   </div>
 
-  <script>
-    (function () {
-      const base = 'https://api.github.com/repos/hwgdreqs/android-companion-apparently';
-      const versionBadge = document.getElementById('versionBadge');
-      const downloadCountSpan = document.getElementById('downloadCount');
-      const btnSubtitle = document.getElementById('btnSubtitle');
-      const downloadBtn = document.getElementById('downloadBtn');
-
-      fetch(base + '/releases/latest')
-        .then(r => {
-          if (!r.ok) throw new Error('latest release fetch failed');
-          return r.json();
-        })
-        .then(latest => {
-          if (latest && latest.tag_name) {
-            if (versionBadge) versionBadge.textContent = latest.tag_name;
-            const asset = latest.assets && latest.assets.find(a => a.name === 'app-release.apk');
-            if (asset) {
-              if (asset.browser_download_url) {
-                downloadBtn.href = asset.browser_download_url;
-              }
-              if (btnSubtitle && asset.size) {
-                const mb = (asset.size / (1024 * 1024)).toFixed(1);
-                btnSubtitle.textContent = `app-release.apk (${mb} MB)`;
-              }
-            }
-          }
-        })
-        .catch(err => {
-          console.warn('Could not fetch latest release', err);
-        });
-
-      fetch(base + '/releases')
-        .then(r => r.json())
-        .then(data => {
-          if (!Array.isArray(data)) return;
-          let total = 0;
-          data.forEach(release => {
-            if (release.assets && Array.isArray(release.assets)) {
-              release.assets.forEach(asset => {
-                if (asset.download_count) total += asset.download_count;
-              });
-            }
-          });
-          if (downloadCountSpan) downloadCountSpan.textContent = total.toLocaleString();
-        })
-        .catch(err => {
-          console.warn('failed to fetch total downloads', err);
-          const badge = document.getElementById('downloadCountBadge');
-          if (badge) badge.style.display = 'none';
-        });
-    })();
-  </script>
 </body>
 
 </html>
