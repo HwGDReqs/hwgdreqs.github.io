@@ -802,17 +802,6 @@
       letter-spacing: .03125rem;
     }
 
-    md-dialog {
-      --md-dialog-container-color: var(--md-sys-color-surface-container-high);
-      max-width: 480px;
-      width: 90%;
-    }
-
-    md-dialog p {
-      margin: 0.5rem 0 1.2rem;
-      line-height: 1.6;
-      color: var(--md-sys-color-on-surface);
-    }
 
     @media (max-width: 768px) {
       .hero-image {
@@ -892,7 +881,7 @@
         <md-icon slot="icon">content_copy</md-icon>
         Copy
       </md-text-button>
-      <md-text-button id="closePopupBtn">Close</md-text-button>
+      <md-text-button id="closePopupBtn" form="altForm">Close</md-text-button>
     </div>
   </md-dialog>
 
@@ -908,7 +897,7 @@
         <md-icon slot="icon">content_copy</md-icon>
         Copy
       </md-text-button>
-      <md-text-button id="closeMacPopupBtn">Ok</md-text-button>
+      <md-text-button id="closeMacPopupBtn" form="macForm">Ok</md-text-button>
     </div>
   </md-dialog>
 
@@ -1618,7 +1607,32 @@
             downloadCountBadge.setAttribute('label', '? total downloads');
           }
         });
+      function centerMdDialog(mdDialog) {
+        const inner = mdDialog.shadowRoot && mdDialog.shadowRoot.querySelector('dialog');
+        if (!inner || !inner.open) return;
+        inner.style.setProperty('position', 'fixed', 'important');
+        inner.style.setProperty('margin', '0', 'important');
+        inner.style.setProperty('top', '50%', 'important');
+        inner.style.setProperty('left', '50%', 'important');
+        inner.style.setProperty('transform', 'translate(-50%, -50%)', 'important');
+      }
 
+      document.querySelectorAll('md-dialog').forEach(function (mdDialog) {
+        const run = function () { centerMdDialog(mdDialog); };
+        mdDialog.addEventListener('open', function () {
+          run();
+          requestAnimationFrame(run);
+        });
+        mdDialog.addEventListener('opened', run);
+        new MutationObserver(run).observe(mdDialog, {
+          attributes: true,
+          attributeFilter: ['open'],
+        });
+      });
+
+      window.addEventListener('resize', function () {
+        document.querySelectorAll('md-dialog[open]').forEach(centerMdDialog);
+      });
       const macPopup = document.getElementById('macQuarantinePopup');
       const macCmd = document.getElementById('macQuarantineCmd');
       const copyMacBtn = document.getElementById('copyMacQuarantineBtn');
