@@ -7,13 +7,13 @@
   <title>HwGDReqs</title>
   <meta property="og:title" content="HwGDReqs" />
   <meta property="og:description" content="Geometry Dash level requests manager for Twitch & YouTube" />
-  <meta property="og:image" content="bg.png" />
+  <meta property="og:image" content="https://hwgdreqs.malikhw.me/bg.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="HwGDReqs" />
   <meta name="twitter:description" content="Geometry Dash level requests manager for Twitch & YouTube" />
-  <meta name="twitter:image" content="bg.png" />
+  <meta name="twitter:image" content="https://hwgdreqs.malikhw.me/bg.png" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -741,6 +741,55 @@
       box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
     }
 
+    .language-switcher {
+      position: fixed;
+      top: max(1rem, env(safe-area-inset-top, 0px));
+      right: max(1rem, env(safe-area-inset-right, 0px));
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.65rem;
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: 9999px;
+      background: color-mix(in srgb, var(--md-sys-color-surface-container) 92%, transparent);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      backdrop-filter: blur(8px);
+    }
+
+    .language-switcher label {
+      color: var(--md-sys-color-on-surface-variant);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .language-switcher select {
+      border: 0;
+      color: var(--md-sys-color-on-surface);
+      background: transparent;
+      font: inherit;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .mobile-warning {
+      width: 100%;
+      max-width: 760px;
+      margin: 0.5rem 0 1.5rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--md-sys-color-error);
+      border-radius: 16px;
+      background: var(--md-sys-color-error-container);
+      color: var(--md-sys-color-on-error-container);
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .mobile-warning strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
     .navbar-inner {
       max-width: 640px;
       height: 80px;
@@ -869,6 +918,14 @@
 
 <body>
   <div class="hero-image" aria-hidden="true"></div>
+  <div class="language-switcher">
+    <label for="languageSelect">Language</label>
+    <select id="languageSelect" aria-label="Select language">
+      <option value="en">English</option>
+      <option value="ru">Русский</option>
+      <option value="es">Español</option>
+    </select>
+  </div>
 
   <md-dialog id="altPopup">
     <div slot="headline">Alternative OS</div>
@@ -1181,6 +1238,12 @@
         This app works as a companion alongside the HwGDReqs desktop application.
       </div>
 
+      <div class="mobile-warning" role="alert">
+        <strong>This app was rejected from the Google Play Store</strong>
+        It has not been tested enough yet. Please install it through the closed testing program and help us test it
+        before the full release.
+      </div>
+
       <div class="download-grid">
         <div class="download-row">
           <md-outlined-button data-tab="main">
@@ -1247,6 +1310,18 @@
           </md-filled-button>
         </div>
       </div>
+
+      <h4><md-icon>star</md-icon> Mobile features</h4>
+      <ul class="features-list">
+        <li><md-icon>wifi_find</md-icon><div>Automatically discovers HwGDReqs desktop instances on your local network with mDNS, with manual localhost port or custom URL connection options.</div></li>
+        <li><md-icon>vpn_key</md-icon><div>Pairs securely with the desktop app using a PIN and remembers authenticated devices for future connections.</div></li>
+        <li><md-icon>search</md-icon><div>Searches the request queue by level name, ID, author, or requester.</div></li>
+        <li><md-icon>playlist_add_check</md-icon><div>Monitors the live queue and lets you manage requests, including clearing the queue and toggling new requests.</div></li>
+        <li><md-icon>chat</md-icon><div>Shows Twitch, YouTube, and Kick chat in separate tabs while you manage the queue.</div></li>
+        <li><md-icon>picture_in_picture_alt</md-icon><div>Provides a floating queue overlay that can stay visible over other apps.</div></li>
+        <li><md-icon>sync_alt</md-icon><div>Can relay the desktop queue to the mobile app for usage with the mobile Geode mod.</div></li>
+        <li><md-icon>info</md-icon><div>Includes device details, connection status, refresh controls, and clear error states when a connection is lost.</div></li>
+      </ul>
 
       <h4><md-icon>format_list_numbered</md-icon> Steps to Use</h4>
       <ul class="instructions-list">
@@ -1777,9 +1852,13 @@
       }
 
       function urlFor(tab) {
-        if (tab === 'main') return window.location.pathname;
-        if (tab === 'faq') return '?mobile';
-        return '?' + tab;
+        const lang = new URLSearchParams(window.location.search).get('lang');
+        const params = new URLSearchParams();
+        if (tab === 'faq') params.set('mobile', '');
+        else if (tab === 'privacy') params.set('privacy', '');
+        if (lang && lang !== 'en') params.set('lang', lang);
+        const query = params.toString();
+        return query ? '?' + query : window.location.pathname;
       }
 
       function show(tab) {
@@ -1849,6 +1928,120 @@
       }
 
       window.addEventListener('popstate', function () { setTab(tabFromURL(), 'none'); });
+
+      const translations = {
+        ru: {
+          'Language': 'Язык',
+          'Select language': 'Выбрать язык',
+          'Main': 'Главная',
+          'Mobile Companion': 'Мобильное приложение',
+          'Privacy Policy': 'Политика конфиденциальности',
+          'Android app companion': 'Мобильное приложение Android',
+          'Mobile companion for HwGDReqs Desktop': 'Мобильное приложение для HwGDReqs Desktop',
+          'Back to Desktop App': 'Назад к приложению для ПК',
+          'How to Install': 'Как установить',
+          'Steps to Use': 'Как пользоваться',
+          'Mobile features': 'Возможности мобильного приложения',
+          'Features': 'Возможности',
+          'Comparison With Other Tools': 'Сравнение с другими инструментами',
+          'Screenshots': 'Скриншоты',
+          'Thanks to early users': 'Спасибо первым пользователям',
+          'Back to main page': 'Назад на главную',
+          'This app was rejected from the Google Play Store': 'Это приложение отклонили в Google Play',
+          'It has not been tested enough yet. Please install it through the closed testing program and help us test it before the full release.': 'Оно ещё недостаточно протестировано. Установите его через программу закрытого тестирования и помогите нам проверить приложение до полного выпуска.',
+          'Get it on Google Play': 'Установить из Google Play',
+          'After completing steps above': 'После выполнения шагов выше',
+          'Make sure the desktop app is running': 'Убедитесь, что приложение для ПК запущено',
+          'Join the Google Group': 'Вступите в группу Google',
+          'Opt into Closed Testing': 'Подключитесь к закрытому тестированию',
+          'Install from the Play Store': 'Установите из Play Store',
+          'Requires a PC': 'Требуется компьютер',
+          'Follow on-screen instructions': 'Следуйте инструкциям на экране',
+          'Automatically discovers HwGDReqs desktop instances on your local network with mDNS, with manual localhost port or custom URL connection options.': 'Автоматически находит приложения HwGDReqs Desktop в локальной сети через mDNS; также доступны ручной порт localhost и пользовательский URL.',
+          'Pairs securely with the desktop app using a PIN and remembers authenticated devices for future connections.': 'Безопасно подключается к приложению для ПК по PIN-коду и запоминает авторизованные устройства.',
+          'Searches the request queue by level name, ID, author, or requester.': 'Ищет в очереди по названию уровня, ID, автору или отправителю запроса.',
+          'Monitors the live queue and lets you manage requests, including clearing the queue and toggling new requests.': 'Показывает очередь в реальном времени и позволяет управлять запросами, очищать очередь и включать или выключать новые запросы.',
+          'Shows Twitch, YouTube, and Kick chat in separate tabs while you manage the queue.': 'Показывает чаты Twitch, YouTube и Kick на отдельных вкладках во время управления очередью.',
+          'Provides a floating queue overlay that can stay visible over other apps.': 'Показывает плавающую очередь поверх других приложений.',
+          'Can relay the desktop queue to the mobile app for usage with the mobile Geode mod.': 'Можно передавать очередь с рабочего стола в мобильное приложение для использования с мобильным модом Geode.',
+          'Includes device details, connection status, refresh controls, and clear error states when a connection is lost.': 'Показывает данные устройства, состояние подключения, обновление и понятные ошибки при потере связи.',
+          'Geometry Dash level requests for Twitch & YouTube': 'Запросы уровней Geometry Dash для Twitch и YouTube',
+          'Started working on this at July 8, 2026': 'Работа над проектом началась 8 июля 2026 года'
+        },
+        es: {
+          'Language': 'Idioma',
+          'Select language': 'Seleccionar idioma',
+          'Main': 'Inicio',
+          'Mobile Companion': 'Aplicación móvil',
+          'Privacy Policy': 'Política de privacidad',
+          'Android app companion': 'Aplicación complementaria para Android',
+          'Mobile companion for HwGDReqs Desktop': 'Aplicación móvil para HwGDReqs Desktop',
+          'Back to Desktop App': 'Volver a la aplicación de escritorio',
+          'How to Install': 'Cómo instalar',
+          'Steps to Use': 'Cómo usarla',
+          'Mobile features': 'Funciones móviles',
+          'Features': 'Funciones',
+          'Comparison With Other Tools': 'Comparación con otras herramientas',
+          'Screenshots': 'Capturas de pantalla',
+          'Thanks to early users': 'Gracias a los primeros usuarios',
+          'Back to main page': 'Volver a la página principal',
+          'This app was rejected from the Google Play Store': 'Esta aplicación fue rechazada en Google Play',
+          'It has not been tested enough yet. Please install it through the closed testing program and help us test it before the full release.': 'Aún no se ha probado lo suficiente. Instálala mediante el programa de pruebas cerradas y ayúdanos a probarla antes del lanzamiento completo.',
+          'Get it on Google Play': 'Obtener en Google Play',
+          'After completing steps above': 'Después de completar los pasos anteriores',
+          'Make sure the desktop app is running': 'Asegúrate de que la aplicación de escritorio esté abierta',
+          'Join the Google Group': 'Únete al grupo de Google',
+          'Opt into Closed Testing': 'Únete a las pruebas cerradas',
+          'Install from the Play Store': 'Instala desde Play Store',
+          'Requires a PC': 'Se necesita un PC',
+          'Follow on-screen instructions': 'Sigue las instrucciones en pantalla',
+          'Automatically discovers HwGDReqs desktop instances on your local network with mDNS, with manual localhost port or custom URL connection options.': 'Detecta automáticamente las instancias de HwGDReqs Desktop en tu red local mediante mDNS, con opciones para usar un puerto localhost o una URL personalizada.',
+          'Pairs securely with the desktop app using a PIN and remembers authenticated devices for future connections.': 'Se conecta de forma segura a la aplicación de escritorio mediante un PIN y recuerda los dispositivos autenticados.',
+          'Searches the request queue by level name, ID, author, or requester.': 'Busca en la cola por nombre del nivel, ID, autor o solicitante.',
+          'Monitors the live queue and lets you manage requests, including clearing the queue and toggling new requests.': 'Muestra la cola en tiempo real y permite gestionar solicitudes, vaciar la cola y activar o desactivar nuevas solicitudes.',
+          'Shows Twitch, YouTube, and Kick chat in separate tabs while you manage the queue.': 'Muestra los chats de Twitch, YouTube y Kick en pestañas separadas mientras gestionas la cola.',
+          'Provides a floating queue overlay that can stay visible over other apps.': 'Ofrece una cola flotante visible sobre otras aplicaciones.',
+          'Can relay the desktop queue to the mobile app for usage with the mobile Geode mod.': 'Puede reenviar la cola del escritorio a la aplicación móvil para usarla con el mod Geode móvil.',
+          'Includes device details, connection status, refresh controls, and clear error states when a connection is lost.': 'Incluye detalles del dispositivo, estado de conexión, controles de actualización y errores claros cuando se pierde la conexión.',
+          'Geometry Dash level requests for Twitch & YouTube': 'Solicitudes de niveles de Geometry Dash para Twitch y YouTube',
+          'Started working on this at July 8, 2026': 'El trabajo en esto comenzó el 8 de julio de 2026'
+        }
+      };
+
+      function applyLanguage(language) {
+        const dictionary = translations[language];
+        document.documentElement.lang = dictionary ? language : 'en';
+        const languageControl = document.getElementById('languageSelect');
+        if (languageControl) {
+          languageControl.setAttribute('aria-label', dictionary && dictionary['Select language'] || 'Select language');
+        }
+        document.querySelectorAll('#languageSelect option').forEach(function (option) {
+          if (option.value === 'en') option.textContent = 'English';
+          if (option.value === 'ru') option.textContent = 'Русский';
+          if (option.value === 'es') option.textContent = 'Español';
+        });
+        if (!dictionary) return;
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(function (node) {
+          const key = node.nodeValue.replace(/\s+/g, ' ').trim();
+          if (dictionary[key]) node.nodeValue = dictionary[key];
+        });
+        document.title = dictionary['HwGDReqs'] || document.title;
+      }
+
+      const languageSelect = document.getElementById('languageSelect');
+      const requestedLanguage = new URLSearchParams(window.location.search).get('lang') || 'en';
+      languageSelect.value = translations[requestedLanguage] ? requestedLanguage : 'en';
+      applyLanguage(languageSelect.value);
+      languageSelect.addEventListener('change', function () {
+        const params = new URLSearchParams(window.location.search);
+        if (languageSelect.value === 'en') params.delete('lang');
+        else params.set('lang', languageSelect.value);
+        window.location.search = params.toString();
+      });
+
       setTab(tabFromURL(), 'replace');
     })();
   </script>
